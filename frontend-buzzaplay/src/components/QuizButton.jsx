@@ -1,0 +1,187 @@
+import { useState, useEffect, useRef } from 'react';
+import { useQuizSocket } from '../hooks/useQuizSocket.jsx';
+import { getOrCreatedPlayerId, getPlayerName, setPlayerName, resetPlayerId } from '../utils/playerIdentity.js';
+import AuctionPlayer from './AuctionPlayer.jsx';
+
+export default function QuizButton() {
+    const playerId = getOrCreatedPlayerId();
+    const savedName = getPlayerName();
+    const connectedRef = useRef(false);
+
+    const [playerName, setPlayerNameState] = useState(savedName || '');
+    const [joined, setJoined] = useState(!!savedName);
+    const [connecting, setConnecting] = useState(false);
+    const [winner, setWinner] = useState(null);
+    const [error, setError] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [canBuzz, setCanBuzz] = useState(false);
+    // Stato per la modalità di gioco
+    const [gameMode, setGameMode] = useState('quiz');
+
+    const socket = useQuizSocket('player', (msg) => {
+        if (msg.type === 'NAME_OK') {
+            setJoined(true);
+            setError(null);
+            setConnecting(false);
+            // Se il server ci dice che siamo in modalità auction, aggiorniamo
+            if (msg.gameMode === 'auction') {
+                setGameMode('auction');
+            }
+        }
+
+        if (msg.type === 'NAME_TAKEN') {
+            setError(msg.message);
+            setJoined(false);
+            setConnecting(false);
+        }
+
+        if (msg.type === 'WINNER') {
+            setWinner(msg.player);
+        }
+
+        if (msg.type === 'RESET') {
+            setWinner(null);
+        }
+
+        if (msg.type === 'PLAYERS_UPDATE') {
+            const me = msg.players.find(p => p.id === playerId);
+            if (me) {
+                setCanBuzz(me.canBuzz);
+            }
+            setPlayers(msg.players.map(p => p.name));
+        }
+
+        if (msg.type === 'FORCE_RESET') {
+            resetPlayerId();
+            window.location.reload();
+        }
+
+        // Se l'admin cambia modalità, ricarichiamo la pagina
+        // in modo che il componente corretto venga montato
+        if (msg.type === 'GAME_MODE_CHANGE') {
+            window.location.reload();
+        }
+    });
+
+    useEffect(() => {
+        if (savedName && !connectedRef.current) {
+            connectedRef.current = true;
+            socket.sendWelcome(savedName);
+        }
+    }, [savedName, socket]);
+
+    /**
+     * 🖱️📱 Handler unificato per BUZZ (mouse + touch).
+     */
+    function handleBuzz(e) {
+        e.preventDefault();
+        socket.buzz();
+    }
+
+    function handleResetIdentity() {
+        const confirmReset = confirm('Sei sicuro di voler entrare come nuovo player?');
+        if (confirmReset) {
+            socket.selfUnregister();
+            resetPlayerId();
+            window.location.reload();
+        }
+    }
+
+    // Se la modalità è 'auction', monta AuctionPlayer
+    // Questo avviene quando il server ha inviato gameMode === 'auction' in NAME_OK
+    // oppure quando il GAME_MODE_CHANGE forza un reload
+    if (gameMode === 'auction') {
+        return <AuctionPlayer />;
+    }
+
+    if (!joined) {
+        if (connecting) {
+            return (
+                <div className="page">
+                    <p style={{ color: 'var(--color-text-secondary)' }}>⏳ Connessione in corso...</p>
+                </div>
+            );
+        }
+        return (
+            <div className="page">
+                <div className="card">
+                    <div className="game-logo">Quizzettone</div>
+                    <p className="card__subtitle">Inserisci il tuo nome per entrare</p>
+
+                    <input
+                        className="input"
+                        value={playerName}
+                        onChange={(e) => setPlayerNameState(e.target.value)}
+                        placeholder="Il tuo nome"
+                    />
+
+                    <div style={{ marginTop: '0.75rem' }}>
+                        <button
+                            className="btn btn--primary btn--full"
+                            disabled={!playerName}
+                            onClick={() => {
+                                setConnecting(true);
+                                setPlayerName(playerName);
+                                socket.sendWelcome(playerName);
+                            }}
+                        >
+                            Entra nel quiz
+                        </button>
+                    </div>
+
+                    {error && <div className="admin-login__error">{error}</div>}
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="page">
+            <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="game-logo">Quizzettone</div>
+
+                <button
+                    className={`buzz-btn ${canBuzz && !winner ? 'buzz-btn--pulse' : ''}`}
+                    onMouseDown={handleBuzz}
+                    onTouchStart={handleBuzz}
+                    disabled={!canBuzz || winner}
+                >
+                    BUZZ!
+                </button>
+
+                {winner && (
+                    <div className="winner-banner">
+                        <div className="winner-banner__label">Primo a premere</div>
+                        <div className="winner-banner__name">{winner}</div>
+                    </div>
+                )}
+            </div>
+
+            <div className="player-list">
+                <div className="player-list__header">
+                    👥 Giocatori ({players.length})
+                </div>
+                {players.length === 0 ? (
+                    <div className="player-list__item" style={{ border: 'none', color: 'var(--color-text-muted)' }}>
+                        Nessun giocatore connesso
+                    </div>
+                ) : (
+                    players.map((p, i) => (
+                        <div key={i} className="player-list__item">
+                            <span className="player-list__dot" />
+                            {p}
+                        </div>
+                    ))
+                )}
+            </div>
+
+            <button
+                className="btn btn--ghost"
+                style={{ marginTop: '1rem' }}
+                onClick={handleResetIdentity}
+            >
+                🔄 Entra come nuovo giocatore
+            </button>
+        </div>
+    );
+}

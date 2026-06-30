@@ -1,0 +1,13 @@
+# Escludo da GitHub i file della root principale (quella esterna alle cartelle "backend-buzzaplay" e "frontend-buzzaplay") che non mi servono
+AGENTS.md
+implementation_plan.md
+implementation_plan_asta_fantacalcio.md
+opencode.json
+sessione-IA/
+plans/
+
+# Escludo tutti i file di docker e i vari readme e guide ad esso riferito
+docker-compose.yml
+deploy/
+analisi/
+.playwright-mcp/
