@@ -6,7 +6,7 @@ import AuctionAdmin from "./AuctionAdmin";
 
 function Admin() {
 
-    const { isAdmin, login, logout } = useAdminAuth();
+    const { isAdmin, loginError, login, logout, attachSendAdminLogin, handleAdminOk, handleAdminDenied } = useAdminAuth();
 
     const [players, setPlayers] = useState([]);
     const [winner, setWinner] = useState(null);
@@ -28,6 +28,16 @@ function Admin() {
     });
 
     const socket = useQuizSocket('admin', (msg) => {
+        // === Messaggi autenticazione admin ===
+        if (msg.type === 'ADMIN_OK') {
+            handleAdminOk();
+            return;
+        }
+        if (msg.type === 'ADMIN_DENIED') {
+            handleAdminDenied();
+            return;
+        }
+
         // === Messaggi comuni ===
         if (msg.type === 'PLAYERS_UPDATE') {
             setPlayers(msg.players);
@@ -153,17 +163,23 @@ function Admin() {
         }
     });
 
+    // Collega la funzione sendAdminLogin del socket a useAdminAuth (solo al mount)
     useEffect(() => {
-        if (isAdmin) {
-            const password = localStorage.getItem('quiz_admin_password');
-            if (password) {
-                socket.sendAdminLogin(password);
-            }
+        attachSendAdminLogin(socket.sendAdminLogin);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // All'avvio, se esiste una password salvata, tenta il re-login automatico (solo al mount)
+    useEffect(() => {
+        const savedPassword = localStorage.getItem('quiz_admin_password');
+        if (savedPassword) {
+            socket.sendAdminLogin(savedPassword);
         }
-    }, [isAdmin]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (!isAdmin) {
-        return <AdminLogin onLogin={login} />;
+        return <AdminLogin onLogin={login} error={loginError} />;
     }
 
     /**

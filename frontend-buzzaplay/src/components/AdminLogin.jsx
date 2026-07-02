@@ -1,15 +1,10 @@
 import { useState } from 'react';
 
-function AdminLogin({ onLogin }) {
+function AdminLogin({ onLogin, error }) {
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
 
     function handleSubmit() {
-        const ok = onLogin(password);
-        if (!ok) {
-            setError('Password errata');
-            setPassword('');
-        }
+        onLogin(password);
     }
 
     function handleKeyDown(e) {
