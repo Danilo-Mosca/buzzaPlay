@@ -17,9 +17,27 @@ export function useQuizSocket(role, onMessage) {
     const socketRef = useRef(null);
     // Coda di messaggi: accumula i comandi inviati prima che la socket diventi OPEN
     const messageQueueRef = useRef([]);
+    // Ref per il timeout di riconnessione (per cancellarlo al cleanup)
+    const reconnectTimeoutRef = useRef(null);
+    // Ref per la callback di re-autenticazione dopo riconnessione
+    const onReconnectRef = useRef(null);
+    // Flag: true se la chiusura è stata intenzionale (es. unmount del componente)
+    const intentionalCloseRef = useRef(false);
+    // Flag: true solo sulla primissima connessione (per non chiamare onReconnect al mount)
+    const isFirstConnectRef = useRef(true);
 
-    // useEffect eseguito solo al montaggio del componente
-    useEffect(() => {
+    /**
+     * 🔌 Crea (o ricrea) la connessione WebSocket.
+     * Separata in una funzione così può essere richiamata sia al mount
+     * che dopo una disconnessione non intenzionale (reconnect automatico).
+     */
+    function connect() {
+        // Annulla eventuali timeout di riconnessione pendenti
+        if (reconnectTimeoutRef.current) {
+            clearTimeout(reconnectTimeoutRef.current);
+            reconnectTimeoutRef.current = null;
+        }
+
         // Creiamo la connessione WebSocket. window.location.hostname è una proprietà di JavaScript che ti restituisce il nome del dominio (host) della pagina web corrente. Serve a connettersi da reti differenti, nel test ho usato il classico ip dinamico ws://192.168.1.86:3000 ovvero nel mio ambiente di sviluppo locale.
         // RIATTIVARE LA RIGA DI SEGUITO PER I TEST IN LOCALE E COMMENTARE LE DUE RIGHE DOPO MODIFICHE PER IL DEPLOY:
         // const ws = new WebSocket(`ws://${window.location.hostname}:3000`);    // Crea la connessione al server WebSocket
@@ -40,6 +58,13 @@ export function useQuizSocket(role, onMessage) {
                 const payload = messageQueueRef.current.shift();
                 ws.send(JSON.stringify(payload));
             }
+
+            // Se NON è la primissima connessione, chiama la callback di re-auth
+            // che il componente ha registrato via socket.onReconnect(...)
+            if (!isFirstConnectRef.current && onReconnectRef.current) {
+                onReconnectRef.current();
+            }
+            isFirstConnectRef.current = false;
         };
 
         ws.onmessage = (event) => {
@@ -47,7 +72,46 @@ export function useQuizSocket(role, onMessage) {
             onMessage(data);
         };
 
-        return () => ws.close();
+        /**
+         * 🔴 Riconnessione automatica: se la WebSocket si chiude INASPETTATAMENTE
+         * (non per unmount del componente o chiamata intenzionale), dopo 3 secondi
+         * ricreiamo la connessione. Il componente verrà notificato via onReconnect
+         * per re-inviare HELLO o ADMIN_LOGIN.
+         */
+        ws.onclose = () => {
+            if (!intentionalCloseRef.current) {
+                console.log('🔴 WebSocket chiusa inaspettatamente — riconnessione tra 3 secondi...');
+                reconnectTimeoutRef.current = setTimeout(() => {
+                    connect();
+                }, 3000);
+            }
+        };
+
+        ws.onerror = () => {
+            // L'evento 'error' è SEMPRE seguito da 'close', quindi gestiamo
+            // la riconnessione in onclose per evitare duplicati.
+        };
+    }
+
+    // useEffect eseguito solo al montaggio del componente
+    useEffect(() => {
+        // Prima connessione: all'avvio del componente
+        intentionalCloseRef.current = false;
+        isFirstConnectRef.current = true;
+        connect();
+
+        // Cleanup allo smontaggio del componente
+        return () => {
+            intentionalCloseRef.current = true;   // Impedisce il reconnect
+            if (reconnectTimeoutRef.current) {
+                clearTimeout(reconnectTimeoutRef.current);
+                reconnectTimeoutRef.current = null;
+            }
+            if (socketRef.current) {
+                socketRef.current.close();
+                socketRef.current = null;
+            }
+        };
     }, []);
 
     /**
@@ -231,6 +295,9 @@ export function useQuizSocket(role, onMessage) {
         sendAdminLogin,
         selfUnregister,
         safeSend,
+
+        // 🔄 Callback di re-autenticazione dopo riconnessione automatica
+        onReconnect: (callback) => { onReconnectRef.current = callback; },
 
         // Quizzettone
         buzz,

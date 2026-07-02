@@ -236,6 +236,19 @@ export default function AuctionPlayer() {
         }
     }, []);
 
+    // 🔄 Re-invio HELLO dopo riconnessione automatica della WebSocket.
+    // Il server riconosce l'UUID e ripristina lo stato del player (budget, esclusioni, ecc.).
+    useEffect(() => {
+        const currentName = getPlayerName();
+        if (currentName) {
+            socket.onReconnect(() => {
+                console.log('🔄 WebSocket riconnessa — re-invio HELLO player (asta)');
+                socket.sendWelcome(currentName);
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /**
      * 🖱️ Handler per la pressione del pulsante OFFRI.
      * Usa onMouseDown (come il BUZZ classico) per minore latenza.

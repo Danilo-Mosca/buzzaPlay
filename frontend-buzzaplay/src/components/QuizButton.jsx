@@ -70,6 +70,19 @@ export default function QuizButton() {
         }
     }, [savedName, socket]);
 
+    // 🔄 Re-invio HELLO dopo riconnessione automatica della WebSocket.
+    // Il server riconosce l'UUID e ripristina lo stato del player.
+    useEffect(() => {
+        const currentName = getPlayerName();
+        if (currentName) {
+            socket.onReconnect(() => {
+                console.log('🔄 WebSocket riconnessa — re-invio HELLO player');
+                socket.sendWelcome(currentName);
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /**
      * 🖱️📱 Handler unificato per BUZZ (mouse + touch).
      */

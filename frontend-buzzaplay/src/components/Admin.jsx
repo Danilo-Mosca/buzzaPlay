@@ -178,6 +178,20 @@ function Admin() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // 🔄 Re-autenticazione dopo riconnessione automatica della WebSocket.
+    // Senza questo, dopo un reconnect il socket non sarebbe più admin
+    // e i pulsanti RESET QUIZ / AVVIA ASTA smetterebbero di funzionare.
+    useEffect(() => {
+        socket.onReconnect(() => {
+            const savedPassword = localStorage.getItem('quiz_admin_password');
+            if (savedPassword) {
+                console.log('🔄 WebSocket riconnessa — re-invio login admin');
+                socket.sendAdminLogin(savedPassword);
+            }
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     if (!isAdmin) {
         return <AdminLogin onLogin={login} error={loginError} />;
     }

@@ -85,20 +85,25 @@ wss.on('connection', (ws) => {
     console.log('🟢 Connessione in entrata');
 
     /**
-     * Abilita TCP Keepalive a livello OS: rileva connessioni morte senza inviare
-     * messaggi applicativi. Il kernel invia probe TCP solo quando inattivo (10s).
+     * ❤️ Heartbeat / Keepalive (ping/pong nativo WebSocket).
      * 
-     * Tentiamo più accessor per il socket sottostante (_socket o _req.socket),
-     * perché il nome della proprietà cambia tra versioni della libreria ws.
+     * Il flag isAlive viene impostato a true all'avvio della connessione.
+     * Ogni 15 secondi il server invia un ping a tutti i client; se un client
+     * non risponde con pong entro il successivo ciclo di heartbeat, la
+     * connessione viene terminata (ws.terminate()).
+     * 
+     * Questo ha due effetti positivi:
+     * 1. Il traffico periodico impedisce al proxy di Render (timeout ~55s)
+     *    di chiudere la WebSocket per inattività.
+     * 2. Le connessioni morte (browser chiuso bruscamente, WiFi perso)
+     *    vengono rilevate in ≤15s invece di attendere il timeout del proxy.
      */
-    try {
-        const sock = ws._socket || (ws._req && ws._req.socket);
-        if (sock && typeof sock.setKeepAlive === 'function') {
-            sock.setKeepAlive(true, 10000);
-        }
-    } catch (e) {
-        // Ignora silenziosamente (es. ambienti protetti o proxy)
-    }
+    ws.isAlive = true;
+
+    ws.on('pong', () => {
+        // Il client ha risposto al ping → connessione ancora viva
+        ws.isAlive = true;
+    });
 
     /**
      * Gestione errori di connessione: se un socket si rompe (es. browser chiuso
@@ -1153,5 +1158,34 @@ const CLEANUP_INTERVAL = setInterval(() => {
         broadcastAuctionState();
     }
 }, 30000);
+
+/**
+ * ❤️ Heartbeat interval: ogni 15 secondi invia un ping a tutti i client.
+ * 
+ * - Se isAlive === false → il client non ha risposto al ping precedente
+ *   → connessione morta, chiamiamo terminate() che triggera l'evento 'close'
+ *   e la conseguente pulizia (connectedPlayers, activeSockets, ecc.).
+ * - Se isAlive === true → impostiamo false e mandiamo un nuovo ping;
+ *   se il client risponderà col pong, isAlive tornerà true.
+ * 
+ * Questo serve a:
+ *   ✅ Tenere viva la WebSocket attraverso il proxy di Render (timeout ~55s)
+ *   ✅ Rilevare connessioni morte in ≤15s (invece di aspettare 55s+)
+ */
+const HEARTBEAT_INTERVAL = setInterval(() => {
+    wss.clients.forEach((ws) => {
+        if (ws.isAlive === false) {
+            // Nessun pong ricevuto dal ciclo precedente → socket morta
+            console.log(`💀 Heartbeat kill per "${ws.playerName || 'sconosciuto'}" (${ws.role || '?'})`);
+            // terminate() chiude brutalmente la socket → triggera l'evento 'close'
+            // che provvede a pulire connectedPlayers e activeSockets
+            ws.terminate();
+            return;
+        }
+        // Marca come "in attesa di pong" e invia il ping
+        ws.isAlive = false;
+        ws.ping();
+    });
+}, 15000);
 
 console.log(`🚀 Quiz server WebSocket in ascolto sulla porta 3000`);
