@@ -160,8 +160,12 @@ export default function AuctionPlayer() {
         if (msg.type === 'AUCTION_BUZZ_WINNER') {
             setCurrentLeaderName(msg.playerName);
             setBuzzLocked(true);
-            // Se io sono il vincitore e siamo in modalità standard,
-            // il server mi invierà AUCTION_BID_REQUEST separatamente
+            // Resetta l'esclusione del vecchio offerente: quando un NUOVO
+            // giocatore buzz, il precedente lastBuzzerId non è più escluso.
+            // L'AUCTION_STATE in arrivo (da broadcastAuctionState lato server)
+            // aggiornerà lastBuzzerId, ma resettando subito qui evitiamo
+            // qualsiasi race condition o render intermedio con dati inconsistenti.
+            setBaseExcluded(false);
             // Segna se QUESTO giocatore è quello che ha buzzato (utile in
             // modalità base per mostrare "Confermo" solo al diretto interessato)
             setIsCurrentSpeaker(msg.playerId === playerId);
