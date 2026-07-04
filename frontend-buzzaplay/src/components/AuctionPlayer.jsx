@@ -432,12 +432,9 @@ export default function AuctionPlayer() {
                     </div>
                 )}
 
-                {/* Riga pulsanti: OFFRI + (se speaker) Confermo affiancato.
-                    Mettendoli in un flex container, OFFRI resta sempre nella stessa
-                    posizione e "Confermo" è a fianco, non sotto: il mouseup dopo un
-                    click su OFFRI non può finire accidentalmente su "Confermo". */}
+                {/* Pulsante OFFRI — da solo, senza Confermo affiancato */}
                 {auctionActive && !excluded && (
-                    <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <button
                             className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
                             onMouseDown={handleAuctionBuzz}
@@ -446,15 +443,19 @@ export default function AuctionPlayer() {
                         >
                             OFFRI!
                         </button>
-                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
-                            <button
-                                className="btn btn--success"
-                                onClick={handleConfirmSpeak}
-                                style={{ fontSize: '1rem', padding: '0.5rem 1.5rem' }}
-                            >
-                                ✅ Confermo
-                            </button>
-                        )}
+                    </div>
+                )}
+
+                {/* Confermo — posizionato qui, lontano da OFFRI, per evitare click accidentali */}
+                {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
+                    <div style={{ margin: '1.5rem 0', textAlign: 'center' }}>
+                        <button
+                            className="btn btn--success"
+                            onClick={handleConfirmSpeak}
+                            style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}
+                        >
+                            ✅ Confermo
+                        </button>
                     </div>
                 )}
 
