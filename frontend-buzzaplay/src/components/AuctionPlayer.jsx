@@ -451,13 +451,17 @@ export default function AuctionPlayer() {
                     </div>
                 )}
 
-                {/* Pulsante OFFRI — disponibile solo durante asta attiva e se idonei */}
-                {auctionActive && !excluded && !baseExcluded && (
+                {/* Pulsante OFFRI — resta SEMPRE nel DOM quando l'asta è attiva,
+                    anche se baseExcluded, per evitare che il layout si "ricompatti"
+                    e sposti il pulsante "Confermo" sotto il cursore del mouse.
+                    Se rimosso dal DOM, il mouseup potrebbe finire su "Confermo"
+                    e causare un doppio invio (buzz + conferma) con un solo click. */}
+                {auctionActive && !excluded && (
                     <button
                         className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
                         onMouseDown={handleAuctionBuzz}
                         onTouchStart={handleAuctionBuzz}
-                        disabled={!canBuzz || buzzLocked || bidRequested || isBidding}
+                        disabled={!canBuzz || buzzLocked || bidRequested || isBidding || baseExcluded}
                     >
                         OFFRI!
                     </button>
