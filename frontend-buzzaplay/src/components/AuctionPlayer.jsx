@@ -39,6 +39,7 @@ export default function AuctionPlayer() {
     const [winnerAnnouncement, setWinnerAnnouncement] = useState(null);
     const [auctionError, setAuctionError] = useState(null);
     const [baseExcluded, setBaseExcluded] = useState(false);
+    const [isCurrentSpeaker, setIsCurrentSpeaker] = useState(false);
     const [bidInput, setBidInput] = useState('');
     const [bidError, setBidError] = useState(null);
     const [isBidding, setIsBidding] = useState(false);
@@ -59,8 +60,16 @@ export default function AuctionPlayer() {
         // Modalità base: esclusione ultimo offerente
         if (state.mode === 'base' || state.auctionMode === 'base') {
             setBaseExcluded(state.lastBuzzerId === playerId);
+            // Determina se QUESTO giocatore è l'attuale speaker (ha buzzato e
+            // l'asta è in pausa in attesa della sua conferma). Usato per mostrare
+            // il pulsante "Confermo" solo al giocatore che ha la parola.
+            setIsCurrentSpeaker(
+                state.lastBuzzerId === playerId &&
+                state.buzzLocked === true
+            );
         } else {
             setBaseExcluded(false);
+            setIsCurrentSpeaker(false);
         }
     }
 
@@ -138,6 +147,7 @@ export default function AuctionPlayer() {
             setExcluded(false);
             setBidRequested(false);
             setBaseExcluded(false);
+            setIsCurrentSpeaker(false);
             setAuctionError(null);
             setBidInput('');
             setBidError(null);
@@ -152,6 +162,9 @@ export default function AuctionPlayer() {
             setBuzzLocked(true);
             // Se io sono il vincitore e siamo in modalità standard,
             // il server mi invierà AUCTION_BID_REQUEST separatamente
+            // Segna se QUESTO giocatore è quello che ha buzzato (utile in
+            // modalità base per mostrare "Confermo" solo al diretto interessato)
+            setIsCurrentSpeaker(msg.playerId === playerId);
         }
 
         if (msg.type === 'AUCTION_BID_REQUEST') {
@@ -177,6 +190,7 @@ export default function AuctionPlayer() {
             setBuzzLocked(false);
             setBidRequested(false);
             setBaseExcluded(false);
+            setIsCurrentSpeaker(false);
             setIsBidding(false);
             setWinnerAnnouncement({
                 winnerName: msg.winnerName,
@@ -194,6 +208,7 @@ export default function AuctionPlayer() {
             setBidRequested(false);
             setExcluded(false);
             setBaseExcluded(false);
+            setIsCurrentSpeaker(false);
             setWinnerAnnouncement(null);
             setAuctionError(null);
             setBidInput('');
@@ -257,6 +272,18 @@ export default function AuctionPlayer() {
         e.preventDefault();
         setAuctionError(null);
         socket.auctionBuzz();
+    }
+
+    /**
+     * ✅ Handler per il pulsante "Confermo" (solo modalità Base).
+     * Il giocatore che ha appena parlato clicca questo pulsante
+     * per far ripartire il timer e permettere ad altri di offrire.
+     * Invia AUCTION_CONFIRM_SPEAK al server che sblocca buzzLocked.
+     */
+    function handleConfirmSpeak(e) {
+        e.preventDefault();
+        setAuctionError(null);
+        socket.confirmSpeak();
     }
 
     /**
@@ -383,6 +410,19 @@ export default function AuctionPlayer() {
                             <div className="auction-bid-info__message">
                                 🎤 {currentLeaderName} ha la parola...
                             </div>
+                        )}
+                        {/* ✅ Pulsante "Confermo" — mostrato SOLO al giocatore che ha
+                            buzzato in modalità Base. Cliccandolo, il timer riparte
+                            e gli altri giocatori possono premere OFFRI.
+                            L'admin ha "Riprendi asta" come fallback. */}
+                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
+                            <button
+                                className="btn btn--success"
+                                onClick={handleConfirmSpeak}
+                                style={{ marginTop: '0.75rem', fontSize: '1rem', padding: '0.5rem 1.5rem' }}
+                            >
+                                ✅ Confermo
+                            </button>
                         )}
                     </div>
                 )}

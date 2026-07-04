@@ -832,6 +832,40 @@ wss.on('connection', (ws) => {
             broadcastAuctionState();
             return;
         }
+
+        /**
+         * ✅ PLAYER → CONFERMA PAROLA (solo modalità Base)
+         *
+         * Dopo aver premuto OFFRI e parlato a voce, il giocatore che ha vinto il buzz
+         * clicca "Confermo" per comunicare al server che ha finito. Il server esegue
+         * la stessa logica di ADMIN_RESUME_AUCTION (sblocca buzzLocked, riavvia timer)
+         * ma validando che la richiesta provenga proprio dal giocatore che ha buzzato.
+         *
+         * L'admin mantiene "Riprendi asta" come fallback per sicurezza (es. il
+         * giocatore si disconnette o non clicca).
+         */
+        if (data.type === 'AUCTION_CONFIRM_SPEAK') {
+            // Solo i player possono usare questo messaggio
+            if (ws.role !== 'player') return;
+            // L'asta deve essere attiva, in modalità base, con buzzLocked = true
+            if (!auctionState.active) return;
+            if (auctionState.mode !== 'base') return;
+            if (!auctionState.buzzLocked) return;
+
+            const playerId = ws.playerId;
+            // Solo il giocatore che ha buzzato per ultimo può confermare
+            if (playerId !== auctionState.lastBuzzerId) return;
+
+            // Sblocca il timer e lo fa ripartire (stessa logica di ADMIN_RESUME_AUCTION)
+            auctionState.buzzLocked = false;
+            auctionState.bidRequestedTo = null;
+            auctionState.timerRemaining = auctionState.timerDuration;
+            startAuctionTimer();
+
+            console.log(`✅ Player "${ws.playerName}" ha confermato la parola — asta ripresa`);
+            broadcastAuctionState();
+            return;
+        }
     });
 
     /**

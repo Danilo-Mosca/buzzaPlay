@@ -286,6 +286,19 @@ export function useQuizSocket(role, onMessage) {
         safeSend({ type: 'AUCTION_BID', amount });
     }
 
+    /**
+     * ✅ PLAYER → Conferma di aver parlato (solo modalità Base).
+     *
+     * Dopo aver premuto OFFRI e parlato a voce, il giocatore clicca "Confermo"
+     * per far ripartire il timer. Invia il proprio UUID così il server può
+     * verificare che sia proprio il giocatore che ha buzzato.
+     * L'admin ha comunque "Riprendi asta" come fallback.
+     */
+    function confirmSpeak() {
+        const playerId = getOrCreatedPlayerId();
+        safeSend({ type: 'AUCTION_CONFIRM_SPEAK', playerId });
+    }
+
     // ================================================================
     //  EXPORT — tutte le funzioni pubbliche
     // ================================================================
@@ -317,5 +330,6 @@ export function useQuizSocket(role, onMessage) {
         resumeAuction,
         auctionBuzz,
         placeBid,
+        confirmSpeak,
     };
 }
