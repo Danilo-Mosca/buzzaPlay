@@ -415,19 +415,6 @@ export default function AuctionPlayer() {
                                 🎤 {currentLeaderName} ha la parola...
                             </div>
                         )}
-                        {/* ✅ Pulsante "Confermo" — mostrato SOLO al giocatore che ha
-                            buzzato in modalità Base. Cliccandolo, il timer riparte
-                            e gli altri giocatori possono premere OFFRI.
-                            L'admin ha "Riprendi asta" come fallback. */}
-                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
-                            <button
-                                className="btn btn--success"
-                                onClick={handleConfirmSpeak}
-                                style={{ marginTop: '0.75rem', fontSize: '1rem', padding: '0.5rem 1.5rem' }}
-                            >
-                                ✅ Confermo
-                            </button>
-                        )}
                     </div>
                 )}
 
@@ -451,20 +438,30 @@ export default function AuctionPlayer() {
                     </div>
                 )}
 
-                {/* Pulsante OFFRI — resta SEMPRE nel DOM quando l'asta è attiva,
-                    anche se baseExcluded, per evitare che il layout si "ricompatti"
-                    e sposti il pulsante "Confermo" sotto il cursore del mouse.
-                    Se rimosso dal DOM, il mouseup potrebbe finire su "Confermo"
-                    e causare un doppio invio (buzz + conferma) con un solo click. */}
+                {/* Riga pulsanti: OFFRI + (se speaker) Confermo affiancato.
+                    Mettendoli in un flex container, OFFRI resta sempre nella stessa
+                    posizione e "Confermo" è a fianco, non sotto: il mouseup dopo un
+                    click su OFFRI non può finire accidentalmente su "Confermo". */}
                 {auctionActive && !excluded && (
-                    <button
-                        className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
-                        onMouseDown={handleAuctionBuzz}
-                        onTouchStart={handleAuctionBuzz}
-                        disabled={!canBuzz || buzzLocked || bidRequested || isBidding || baseExcluded}
-                    >
-                        OFFRI!
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
+                        <button
+                            className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
+                            onMouseDown={handleAuctionBuzz}
+                            onTouchStart={handleAuctionBuzz}
+                            disabled={!canBuzz || buzzLocked || bidRequested || isBidding || baseExcluded}
+                        >
+                            OFFRI!
+                        </button>
+                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
+                            <button
+                                className="btn btn--success"
+                                onClick={handleConfirmSpeak}
+                                style={{ fontSize: '1rem', padding: '0.5rem 1.5rem' }}
+                            >
+                                ✅ Confermo
+                            </button>
+                        )}
+                    </div>
                 )}
 
                 {/* Banner esclusione (solo modalità standard) */}
