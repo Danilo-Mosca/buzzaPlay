@@ -432,28 +432,27 @@ export default function AuctionPlayer() {
                     </div>
                 )}
 
-                {/* Pulsante unico: "OFFRI!" si trasforma in "CONFERMO" nella
-                    stessa posizione. Entrambi usano onMouseDown/onTouchStart,
-                    mai onClick: un singolo tocco non può attivarli entrambi
-                    perché il rilascio non triggera onMouseDown. */}
+                {/* Riga pulsanti: OFFRI + (se speaker) Confermo affiancato.
+                    Mettendoli in un flex container, OFFRI resta sempre nella stessa
+                    posizione e "Confermo" è a fianco, non sotto: il mouseup dopo un
+                    click su OFFRI non può finire accidentalmente su "Confermo". */}
                 {auctionActive && !excluded && (
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker ? (
+                    <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
+                        <button
+                            className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
+                            onMouseDown={handleAuctionBuzz}
+                            onTouchStart={handleAuctionBuzz}
+                            disabled={!canBuzz || buzzLocked || bidRequested || isBidding || baseExcluded}
+                        >
+                            OFFRI!
+                        </button>
+                        {buzzLocked && !bidRequested && auctionMode === 'base' && isCurrentSpeaker && (
                             <button
-                                className="auction-btn auction-btn--confirm"
-                                onMouseDown={handleConfirmSpeak}
-                                onTouchStart={handleConfirmSpeak}
+                                className="btn btn--success"
+                                onClick={handleConfirmSpeak}
+                                style={{ fontSize: '1rem', padding: '0.5rem 1.5rem' }}
                             >
-                                CONFERMO
-                            </button>
-                        ) : (
-                            <button
-                                className={`auction-btn ${canBuzz && !buzzLocked && !bidRequested ? 'auction-btn--pulse' : ''}`}
-                                onMouseDown={handleAuctionBuzz}
-                                onTouchStart={handleAuctionBuzz}
-                                disabled={!canBuzz || buzzLocked || bidRequested || isBidding || baseExcluded}
-                            >
-                                OFFRI!
+                                ✅ Confermo
                             </button>
                         )}
                     </div>
