@@ -122,7 +122,7 @@ npm run dev -- --host
 4. Clicca **🎬 AVVIA ASTA** — parte il countdown
 5. I giocatori premono **OFFRI!** per aggiudicarsi il diritto di fare un'offerta
 6. In modalità Standard: il vincitore inserisce l'importo e conferma
-7. In modalità Base: il vincitore parla, l'admin clicca **🔓 RIPRENDI ASTA**
+7. In modalità Base: il vincitore parla, poi clicca **✅ Confermo** (pulsante separato da OFFRI, lontano per evitare click accidentali) oppure l'admin clicca **🔓 RIPRENDI ASTA**
 8. Al termine, il vincitore paga in crediti — l'admin può avviare una nuova asta
 
 ## Comandi disponibili
@@ -163,6 +163,7 @@ npm run dev -- --host
 | `ADMIN_RESUME_AUCTION` | → server | Sblocca buzz (modalità Base) |
 | `AUCTION_BUZZ` | → server | Pressione OFFRI |
 | `AUCTION_BID` | → server | Invio offerta (modalità Standard) |
+| `AUCTION_CONFIRM_SPEAK` | → server | Player conferma la parola e sblocca il timer (modalità Base) |
 | `AUCTION_STARTED` | ← server | Asta avviata |
 | `AUCTION_TIMER` | ← server | Tick countdown (ogni secondo) |
 | `AUCTION_BUZZ_WINNER` | ← server | Vincitore del buzz |
