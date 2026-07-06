@@ -128,10 +128,19 @@ export default function AuctionPlayer() {
 
         // === Messaggi BUDGET ===
         if (msg.type === 'BUDGETS_UPDATE') {
+            // Aggiorna il budget del giocatore corrente con il valore
+            // già scalato dal server (nessuna doppia deduzione lato client)
             const me = msg.budgets.find(b => b.id === playerId);
             if (me) {
                 setMyBudget(me.budget);
             }
+            // Sincronizza anche la lista giocatori ("Lista giocatori con budget")
+            // con i budget aggiornati, così da evitare dati obsoleti dopo
+            // un'aggiudicazione. Stesso pattern usato in Admin.jsx.
+            setPlayers(prev => prev.map(p => {
+                const budgetEntry = msg.budgets.find(b => b.id === p.id);
+                return budgetEntry ? { ...p, budget: budgetEntry.budget } : p;
+            }));
         }
 
         // === Messaggi ASTA ===
@@ -194,10 +203,12 @@ export default function AuctionPlayer() {
                 winnerName: msg.winnerName,
                 amount: msg.amount
             });
-            // Aggiorniamo il budget dopo l'aggiudicazione
-            if (msg.winnerId === playerId) {
-                setMyBudget(prev => prev - msg.amount);
-            }
+            // NOTA: il budget NON va scalato manualmente qui perché il server
+            // ha già dedotto l'importo vincente (closeAuction in server.js)
+            // e ha già inviato BUDGETS_UPDATE con il valore corretto PRIMA
+            // di questo messaggio. Una seconda deduzione causerebbe un
+            // doppio scalto (es. 500 - 100 = 400, poi 400 - 100 = 300 ❌).
+            // Il budget corretto arriva già via BUDGETS_UPDATE → setMyBudget.
         }
 
         if (msg.type === 'AUCTION_CANCELLED') {
