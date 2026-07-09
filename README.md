@@ -75,6 +75,7 @@ buzzaplay/
 │   │   │   ├── AuctionPlayer.jsx ← Schermata giocatore (modalità asta)
 │   │   │   ├── Admin.jsx         ← Dashboard admin (entrambe modalità)
 │   │   │   ├── AuctionAdmin.jsx  ← Admin dashboard (modalità asta)
+│   │   │   ├── DomandeQuiz.jsx   ← Gestione DB domande quiz (admin)
 │   │   │   ├── AdminLogin.jsx    ← Schermata login admin
 │   │   │   └── CountdownTimer.jsx← Timer circolare SVG (riutilizzato)
 │   │   ├── hooks/
