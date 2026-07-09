@@ -18,6 +18,7 @@ COPY backend-buzzaplay/package.json /app/backend/
 RUN apk add --no-cache nodejs npm \
     && cd /app/backend && npm install --omit=dev
 COPY backend-buzzaplay/server.js /app/backend/server.js
+COPY backend-buzzaplay/db /app/backend/db
 
 # Copia lo script di avvio
 COPY docker/start.sh /start.sh

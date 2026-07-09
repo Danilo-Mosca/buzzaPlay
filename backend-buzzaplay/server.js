@@ -20,16 +20,12 @@ if (!ADMIN_PASSWORD) {
 }
 
 /**
- * 🗄️ DATABASE_URL — URL di connessione a PostgreSQL (obbligatorio).
+ * 🗄️ DATABASE_URL — URL di connessione a PostgreSQL (opzionale).
  * Su Render.com viene popolata automaticamente quando crei un PostgreSQL.
  * In locale, va inserita manualmente nel .env.
  * Esempio: postgres://user:password@host:5432/buzzaplay
+ * Se mancante, db.init() entra in modalità graceful: server parte senza database.
  */
-const DATABASE_URL = process.env.DATABASE_URL;
-if (!DATABASE_URL) {
-    console.error('❌ ERRORE: DATABASE_URL non definita. Aggiungerla al file .env');
-    process.exit(1);
-}
 
 /* ============================================================
    STATO MODALITÀ QUIZETTONE (invariato)
@@ -1397,7 +1393,8 @@ const HEARTBEAT_INTERVAL = setInterval(() => {
  * 3. Se le tabelle sono vuote, le popola con i dati di seed.sql
  *
  * Se DATABASE_URL è mancante o la connessione fallisce,
- * il server si ferma con errore (process.exit).
+ * il server parte comunque (modalità graceful), ma la sezione
+ * "Domande Quiz" nell'admin mostrerà un avviso.
  *
  * Nota: l'avvio del WebSocket server (new WebSocketServer) non è
  * bloccante, quindi le connessioni possono arrivare prima che
