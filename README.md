@@ -31,6 +31,10 @@ BuzzaPlay è utilizzabile senza installare app dedicate ed è compatibile con:
 - 🧑‍🤝‍🧑 Gestione di più giocatori contemporaneamente
 - 🛎️ Pulsante BUZZ con feedback immediato
 - 🏆 **Classifica** con punteggi persistenti (➕/➖ per giocatore, reset globale)
+- ❓ **Database PostgreSQL** (14 categorie, 100+ domande con 4 risposte ciascuna)
+- 🎲 **Domande visualizzabili nell'admin** con filtri per categoria e difficoltà
+- 🔀 **Risposte in ordine casuale** (Fisher-Yates shuffle lato server)
+- 💡 **Rivela risposta corretta** (UI locale nell'admin)
 
 ### Modalità Asta Fantacalcio
 - 💰 **Budget individuale** — ogni giocatore parte con un monte crediti assegnato dall'admin
@@ -53,10 +57,14 @@ BuzzaPlay è utilizzabile senza installare app dedicate ed è compatibile con:
 ```
 buzzaplay/
 ├── backend-buzzaplay/            ← Server WebSocket (Node.js)
-│   ├── .env                      ← Password admin (gitignored)
+│   ├── .env                      ← Password admin + DATABASE_URL (gitignored)
 │   ├── .env.example              ← Template per .env
 │   ├── server.js                 ← Entry point (porta 3000)
-│   │                             (stato quiz + stato asta + 15+ messaggi)
+│   │                             (stato quiz + stato asta + 20+ messaggi)
+│   ├── db/
+│   │   ├── schema.sql            ← DDL tabelle (categorie + domande)
+│   │   ├── seed.sql              ← Dati iniziali (14 categorie, 100+ domande)
+│   │   └── index.js              ← Connessione PostgreSQL + init
 │   └── package.json
 ├── frontend-buzzaplay/           ← Client React (Vite)
 │   ├── src/
@@ -70,7 +78,7 @@ buzzaplay/
 │   │   │   ├── AdminLogin.jsx    ← Schermata login admin
 │   │   │   └── CountdownTimer.jsx← Timer circolare SVG (riutilizzato)
 │   │   ├── hooks/
-│   │   │   ├── useQuizSocket.jsx ← Hook WebSocket (quiz + asta)
+│   │   │   ├── useQuizSocket.jsx ← Hook WebSocket (quiz + asta + domande DB)
 │   │   │   └── useAdminAuth.jsx  ← Hook auth admin
 │   │   └── utils/
 │   │       └── playerIdentity.js ← UUID + localStorage
@@ -78,12 +86,18 @@ buzzaplay/
 ├── AGENTS.md                     ← Istruzioni per l'agente AI
 ├── implementation_plan.md        ← Documento di design originale
 ├── implementation_plan_asta_fantacalcio.md  ← Documento di design asta
+├── implementation_plan_db_quizzettone.md   ← Documento di design database
 └── README.md
 ```
 
 ## Requisiti
 
 - Node.js 20.6+ (per `--env-file` e `--watch`)
+- Database PostgreSQL (opzionale — il server parte comunque in modalità graceful)
+  - Se mancante o non raggiungibile: il server funziona senza la sezione "Domande Quiz"
+  - Tutte le altre funzionalità (buzz, punteggi, aste) funzionano normalmente
+  - Su Render.com: PostgreSQL Free Tier incluso
+  - In locale: Docker (`docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=password postgres:16`)
 
 ## 📦 Avvio del progetto
 
@@ -96,7 +110,7 @@ git clone https://github.com/danilo-mosca/buzzaplay.git
 # 2. Backend: installa dipendenze e avvia
 cd backend-buzzaplay
 npm install
-cp .env.example .env          # configura la password admin
+cp .env.example .env          # configura password admin e DATABASE_URL
 npm run dev                   # server su ws://localhost:3000
 
 # 3. Frontend (nuovo terminale)
@@ -177,10 +191,18 @@ npm run dev -- --host
 | `BUDGETS_UPDATE` | ← server | Budget aggiornati |
 | `GAME_MODE_CHANGE` | ← server | Cambio modalità notificato a tutti |
 
+### Domande Quiz (Database PostgreSQL)
+| Messaggio | Direzione | Effetto |
+|---|---|---|
+| `ADMIN_GET_CATEGORIES` | → server | Richiede la lista delle categorie (solo admin) |
+| `ADMIN_GET_QUESTION` | → server | Richiede una domanda con filtri categoria/difficoltà (solo admin) |
+| `CATEGORIES` | ← server | Lista delle categorie disponibili |
+| `QUESTION` | ← server | Domanda con 4 risposte mescolate |
+
 ## Tecnologie
 
-- **Backend:** Node.js, `ws` (WebSocket)
+- **Backend:** Node.js, `ws` (WebSocket), `pg` (PostgreSQL driver)
 - **Frontend:** React 19, Vite, react-router-dom v7
 - **Stile:** CSS vanilla con design system custom
-- **Persistenza:** localStorage (identità player, auth admin) / server RAM (stato gioco, punteggi, budget)
-- **Rilevamento connessioni morte:** TCP Keepalive (OS-level, senza ping/pong applicativo)
+- **Persistenza:** PostgreSQL (domande quiz), localStorage (identità player, auth admin), server RAM (stato gioco, punteggi, budget)
+- **Rilevamento connessioni morte:** WebSocket ping/pong heartbeat ogni 15s

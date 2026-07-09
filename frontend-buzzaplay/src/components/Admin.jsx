@@ -13,6 +13,20 @@ function Admin() {
     const [scores, setScores] = useState([]);
     // Stato per la modalità di gioco, l'asta e la persistenza risultato
     const [gameMode, setGameMode] = useState('quiz');
+
+    // === Stato per le domande Quiz (Database PostgreSQL) ===
+    // categories: lista delle categorie ricevuta dal server ({id, nome})
+    // categoriesLoaded: flag per distinguere "non ancora caricato" da "caricato ma vuoto"
+    const [categories, setCategories] = useState([]);
+    const [categoriesLoaded, setCategoriesLoaded] = useState(false);
+    // selectedCategoria: ID della categoria selezionata nel dropdown (null = "Casuale")
+    const [selectedCategoria, setSelectedCategoria] = useState(null);
+    // selectedDifficolta: difficoltà selezionata nel dropdown (null = "Casuale")
+    const [selectedDifficolta, setSelectedDifficolta] = useState(null);
+    // currentQuestion: oggetto domanda corrente ricevuto dal server (null = nessuna domanda visibile)
+    const [currentQuestion, setCurrentQuestion] = useState(null);
+    // revealed: flag per l'UI locale — true = "Rivela Risposta Corretta" premuto
+    const [revealed, setRevealed] = useState(false);
     const [auctionEnded, setAuctionEnded] = useState(false);
     const [auctionState, setAuctionState] = useState({
         active: false,
@@ -29,8 +43,14 @@ function Admin() {
 
     const socket = useQuizSocket('admin', (msg) => {
         // === Messaggi autenticazione admin ===
+        // ADMIN_OK: login admin riuscito → il socket ha ruolo 'admin'
+        // Richiediamo subito la lista delle categorie per popolare
+        // il dropdown "Categoria" nella sezione Domande Quiz.
+        // Questo avviene sia al primo login che dopo riconnessione automatica
+        // (grazie al re-invio di ADMIN_LOGIN via onReconnect).
         if (msg.type === 'ADMIN_OK') {
             handleAdminOk();
+            socket.getCategories();
             return;
         }
         if (msg.type === 'ADMIN_DENIED') {
@@ -161,6 +181,23 @@ function Admin() {
                 return budgetEntry ? { ...p, budget: budgetEntry.budget } : p;
             }));
         }
+
+        // === Messaggi Domande Quiz (Database) ===
+        // CATEGORIES: arriva dal server dopo ADMIN_GET_CATEGORIES
+        // Contiene la lista di {id, nome} per popolare il dropdown
+        if (msg.type === 'CATEGORIES') {
+            setCategories(msg.categories || []);
+            setCategoriesLoaded(true);
+        }
+
+        // QUESTION: arriva dal server dopo ADMIN_GET_QUESTION
+        // Contiene { id, categoria, difficolta, testo, risposte[{testo, corretta}] }
+        // Se msg.domanda è null, significa che nessuna domanda corrisponde ai filtri
+        // Al ricevimento di una nuova domanda, resettiamo il flag revealed
+        if (msg.type === 'QUESTION') {
+            setCurrentQuestion(msg.domanda);
+            setRevealed(false);  // Resetta la rivelazione per la nuova domanda
+        }
     });
 
     // Collega la funzione sendAdminLogin del socket a useAdminAuth (solo al mount)
@@ -258,6 +295,173 @@ function Admin() {
                             </div>
                         </div>
                     )}
+
+                    {/* ===== INIZIO SEZIONE DOMANDE QUIZ (Database PostgreSQL) ===== */}
+                    {/* ❓ Domande Quiz (Database PostgreSQL)
+                       
+                        Questa sezione è visibile SOLO nella dashboard admin
+                        (mai sui player). Permette all'admin di:
+                        
+                        1. Selezionare una categoria dal dropdown (popolato via CATEGORIES)
+                        2. Selezionare una difficoltà (Casuale/Facile/Medio/Difficile)
+                        3. Cliccare "Mostra Domanda" per ricevere una domanda casuale
+                        4. Visualizzare la domanda con 4 risposte in ordine mescolato
+                        5. Cliccare "Rivela Risposta Corretta" (UI locale, nessun messaggio WS)
+                        6. Chiudere la domanda per tornare ai filtri
+                        
+                        La rivelazione della risposta corretta è puramente UI locale:
+                        cambia solo lo stile della risposta con corretta: true.
+                        Non viene inviato nessun messaggio WebSocket.
+                    */}
+                    <div className="admin-section">
+                        <div className="admin-section__header">
+                            <div className="admin-section__title">❓ Domande Quiz</div>
+                        </div>
+
+                        {/* 
+                            FASE 1: SELEZIONE FILTRI — visibile solo quando non c'è una domanda attiva
+                            Mostra i dropdown per categoria e difficoltà e il pulsante "Mostra Domanda".
+                        */}
+                        {!currentQuestion && (
+                            <>
+                                {/* ⚠️ Database domande non disponibile: mostra avviso invece dei filtri */}
+                                {categoriesLoaded && categories.length === 0 ? (
+                                    <div className="empty-state" style={{ marginTop: '0.5rem' }}>
+                                        <div className="empty-state__icon">⚠️</div>
+                                        <div className="empty-state__text">
+                                            Database domande non raggiungibile.
+                                        </div>
+                                        <div style={{ fontSize: '0.85rem', color: '#aaa', marginTop: '0.3rem' }}>
+                                            Le domande Quiz non sono disponibili.
+                                            Verifica che PostgreSQL sia in esecuzione e che DATABASE_URL sia corretta.
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                                        {/* Dropdown Categoria — popolato dinamicamente dal server */}
+                                        <div>
+                                            <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.2rem', color: '#aaa' }}>
+                                                Categoria
+                                            </label>
+                                            <select
+                                                className="input"
+                                                value={selectedCategoria ?? ''}
+                                                onChange={e => setSelectedCategoria(e.target.value ? Number(e.target.value) : null)}
+                                                style={{ padding: '0.4rem 0.6rem' }}
+                                            >
+                                                <option value="">Casuale</option>
+                                                {categories.map(cat => (
+                                                    <option key={cat.id} value={cat.id}>{cat.nome}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.2rem', color: '#aaa' }}>
+                                                Difficoltà
+                                            </label>
+                                            <select
+                                                className="input"
+                                                value={selectedDifficolta ?? ''}
+                                                onChange={e => setSelectedDifficolta(e.target.value || null)}
+                                                style={{ padding: '0.4rem 0.6rem' }}
+                                            >
+                                                <option value="">Casuale</option>
+                                                <option value="facile">Facile</option>
+                                                <option value="medio">Medio</option>
+                                                <option value="difficile">Difficile</option>
+                                            </select>
+                                        </div>
+
+                                        <button
+                                            className="btn btn--primary"
+                                            onClick={() => socket.getQuestion(selectedCategoria, selectedDifficolta)}
+                                        style={{ fontSize: '0.95rem', padding: '0.4rem 1rem' }}
+                                    >
+                                        🎲 Mostra Domanda
+                                    </button>
+                                </div>
+                            )
+                        }
+                            </>
+                        )}
+
+                        {currentQuestion && (
+                            <div style={{ marginTop: '0.5rem' }}>
+                                <div style={{
+                                    background: 'var(--surface2)',
+                                    borderRadius: '0.5rem',
+                                    padding: '1rem',
+                                    marginBottom: '0.75rem',
+                                    fontSize: '1.1rem',
+                                    fontWeight: 600,
+                                    lineHeight: 1.4,
+                                }}>
+                                    <div style={{ fontSize: '0.75rem', color: '#888', marginBottom: '0.4rem', fontWeight: 400 }}>
+                                        {currentQuestion.categoria} · {currentQuestion.difficolta}
+                                    </div>
+                                    {currentQuestion.testo}
+                                </div>
+
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                                    {currentQuestion.risposte.map((r, i) => {
+                                        const letter = String.fromCharCode(65 + i);
+                                        const isCorrect = revealed && r.corretta;
+                                        return (
+                                            <div key={i} style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                padding: '0.5rem 0.75rem',
+                                                borderRadius: '0.4rem',
+                                                background: isCorrect ? 'var(--success-bg, #1b5e20)' : 'var(--surface2)',
+                                                color: isCorrect ? '#fff' : 'inherit',
+                                                transition: 'background 0.2s',
+                                            }}>
+                                                <span style={{
+                                                    width: '1.5rem',
+                                                    height: '1.5rem',
+                                                    borderRadius: '50%',
+                                                    background: 'var(--accent)',
+                                                    color: '#fff',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: 700,
+                                                    flexShrink: 0,
+                                                }}>
+                                                    {letter}
+                                                </span>
+                                                <span>{r.testo}</span>
+                                                {isCorrect && <span style={{ marginLeft: 'auto', fontSize: '0.8rem' }}>✅ Corretta</span>}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem' }}>
+                                    <button
+                                        className="btn btn--ghost"
+                                        onClick={() => setRevealed(true)}
+                                        disabled={revealed}
+                                    >
+                                        💡 Rivela Risposta Corretta
+                                    </button>
+                                    <button
+                                        className="btn btn--ghost"
+                                        onClick={() => {
+                                            setCurrentQuestion(null);
+                                            setRevealed(false);
+                                        }}
+                                    >
+                                        ✕ Chiudi
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* ===== FINE SEZIONE DOMANDE QUIZ ===== */}
 
                     {/* Quiz controls */}
                     <div className="admin-section">
@@ -416,6 +620,7 @@ function Admin() {
                             </div>
                         )}
                     </div>
+
                 </div>
             )}
         </div>

@@ -1,5 +1,8 @@
 // Importiamo la libreria ws (WebSocket server)
 import { WebSocketServer, WebSocket } from 'ws';
+// Modulo database PostgreSQL per le domande del Quizzettone
+// Espone db.init() (chiamato all'avvio) e db.query() (per fare query)
+import db from './db/index.js';
 
 // Creiamo un server WebSocket che ascolta sulla porta 3000
 // Prima del deploy per il locale:
@@ -13,6 +16,18 @@ const wss = new WebSocketServer({ host: '127.0.0.1', port: 3000 });
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 if (!ADMIN_PASSWORD) {
     console.error('❌ ERRORE: ADMIN_PASSWORD non definita. Creare un file .env con ADMIN_PASSWORD=...');
+    process.exit(1);
+}
+
+/**
+ * 🗄️ DATABASE_URL — URL di connessione a PostgreSQL (obbligatorio).
+ * Su Render.com viene popolata automaticamente quando crei un PostgreSQL.
+ * In locale, va inserita manualmente nel .env.
+ * Esempio: postgres://user:password@host:5432/buzzaplay
+ */
+const DATABASE_URL = process.env.DATABASE_URL;
+if (!DATABASE_URL) {
+    console.error('❌ ERRORE: DATABASE_URL non definita. Aggiungerla al file .env');
     process.exit(1);
 }
 
@@ -131,7 +146,7 @@ wss.on('connection', (ws) => {
     /**
      * Evento: il client manda un messaggio
      */
-    ws.on('message', (msg) => {
+    ws.on('message', async (msg) => {
         const data = JSON.parse(msg);
 
         /* ========================================================
@@ -482,6 +497,124 @@ wss.on('connection', (ws) => {
             }
             broadcastScores();
             console.log('🏆 Classifica resettata dall\'admin');
+        }
+
+        /* ============================================================
+           ❓ DOMANDE QUIZ (DATABASE) — NUOVI HANDLER
+           ============================================================
+           Questi handler servono l'admin dashboard per visualizzare
+           le domande del Quizzettone prelevate dal database PostgreSQL.
+           Le domande NON vengono trasmesse ai player — sono visibili
+           solo nella schermata admin.
+           ============================================================ */
+
+        /**
+         * 📋 ADMIN_GET_CATEGORIES — Richiede la lista di tutte le categorie.
+         *
+         * Query: SELECT tutte le categorie ordinate alfabeticamente.
+         * Risposta: { type: 'CATEGORIES', categories: [{id, nome}] }
+         *
+         * Questa lista popola il dropdown "Categoria" nella dashboard admin,
+         * permettendo all'admin di filtrare le domande per categoria.
+         */
+        if (data.type === 'ADMIN_GET_CATEGORIES') {
+            // Solo gli admin autenticati possono richiedere le categorie
+            if (ws.role !== 'admin') return;
+
+            try {
+                // Query semplice: tutte le categorie in ordine alfabetico
+                const result = await db.query('SELECT id, nome FROM categorie ORDER BY nome');
+                ws.send(JSON.stringify({
+                    type: 'CATEGORIES',
+                    categories: result.rows  // Array di {id, nome}
+                }));
+            } catch (err) {
+                console.error('❌ Errore query categorie:', err.message);
+            }
+            return;
+        }
+
+        /**
+         * ❓ ADMIN_GET_QUESTION — Richiede una domanda casuale con filtri.
+         *
+         * Parametri opzionali (entrambi default null = "Casuale"):
+         *   categoria_id  → filtra per categoria specifica
+         *   difficolta    → filtra per 'facile'/'medio'/'difficile'
+         *
+         * La query SQL usa WHERE con OR $1 IS NULL per rendere i filtri
+         * opzionali: se categoria_id è null, vengono prese TUTTE le categorie.
+         *
+         * ORDER BY RANDOM() + LIMIT 1 → prende una riga casuale.
+         *
+         * Le 4 risposte (1 corretta + 3 errate) vengono poi mischiate
+         * con l'algoritmo Fisher-Yates prima di essere inviate, così
+         * l'ordine è sempre imprevedibile.
+         */
+        if (data.type === 'ADMIN_GET_QUESTION') {
+            // Solo gli admin autenticati possono richiedere domande
+            if (ws.role !== 'admin') return;
+
+            // categoria_id = null → tutte le categorie (selezionato "Casuale")
+            // difficolta = null → tutte le difficoltà (selezionato "Casuale")
+            const { categoria_id = null, difficolta = null } = data;
+
+            try {
+                // Query parametrizzata: i filtri sono opzionali grazie a OR $1 IS NULL
+                // ORDER BY RANDOM() + LIMIT 1 seleziona una domanda casuale
+                const result = await db.query(
+                    `SELECT d.id, d.difficolta, d.domanda,
+                            d.risposta_corretta, d.risposta_errata_1,
+                            d.risposta_errata_2, d.risposta_errata_3,
+                            c.nome AS categoria
+                     FROM domande d
+                     JOIN categorie c ON d.categoria_id = c.id
+                     WHERE (c.id = $1 OR $1 IS NULL)
+                       AND (d.difficolta = $2 OR $2 IS NULL)
+                     ORDER BY RANDOM()
+                     LIMIT 1`,
+                    [categoria_id, difficolta]
+                );
+
+                // Nessuna domanda trovata con questi filtri
+                if (result.rows.length === 0) {
+                    ws.send(JSON.stringify({
+                        type: 'QUESTION',
+                        domanda: null  // Il frontend mostrerà "Nessuna domanda trovata"
+                    }));
+                    return;
+                }
+
+                // Costruisce l'array delle 4 risposte con flag corretta
+                // La risposta corretta è sempre la prima, le errate dopo
+                // (verranno mischiate subito dopo)
+                const row = result.rows[0];
+                const risposte = [
+                    { testo: row.risposta_corretta, corretta: true },
+                    { testo: row.risposta_errata_1, corretta: false },
+                    { testo: row.risposta_errata_2, corretta: false },
+                    { testo: row.risposta_errata_3, corretta: false },
+                ];
+
+                // 🔀 Fisher-Yates shuffle: mescola l'array in-place così
+                // l'ordine delle risposte è casuale e il giocatore non può
+                // sapere quale sia la corretta dalla posizione
+                shuffleFisherYates(risposte);
+
+                // Invia la domanda completa all'admin
+                ws.send(JSON.stringify({
+                    type: 'QUESTION',
+                    domanda: {
+                        id: row.id,
+                        categoria: row.categoria,    // Nome della categoria (es. "Scienze")
+                        difficolta: row.difficolta,   // 'facile', 'medio', 'difficile'
+                        testo: row.domanda,
+                        risposte,                     // Array di 4 {testo, corretta} mescolato
+                    }
+                }));
+            } catch (err) {
+                console.error('❌ Errore query domanda:', err.message);
+            }
+            return;
         }
 
         /* ============================================================
@@ -961,6 +1094,39 @@ function broadcastScores() {
     });
 }
 
+/**
+ * 🔀 Fisher-Yates shuffle — mescola un array in-place.
+ *
+ * Algoritmo classico di mescolamento con complessità O(n):
+ * - Parte dall'ultimo elemento e sceglie casualmente un indice j tra 0 e i
+ * - Scambia l'elemento corrente (i) con quello all'indice j
+ * - Continua finché non arriva al primo elemento
+ *
+ * Usato per randomizzare l'ordine delle risposte delle domande prima
+ * di inviarle all'admin. Il server conosce qual è la corretta (flag
+ * corretta: true) ma la posizione è imprevedibile.
+ *
+ * @param {Array} array - Array da mescolare (modificato in-place)
+ * @returns {Array} - Lo stesso array mescolato
+ *
+ * Esempio:
+ *   let risposte = [
+ *     { testo: 'Vero', corretta: true },
+ *     { testo: 'Falso', corretta: false },
+ *   ];
+ *   shuffleFisherYates(risposte);
+ *   // → [{ testo: 'Falso', corretta: false }, { testo: 'Vero', corretta: true }]
+ */
+function shuffleFisherYates(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        // Sceglie un indice casuale tra 0 e i (incluso)
+        const j = Math.floor(Math.random() * (i + 1));
+        // Scambia l'elemento in posizione i con quello in posizione j
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 /* ============================================================
    FUNZIONI HELPER — ASTA FANTACALCIO
    ============================================================ */
@@ -1222,4 +1388,22 @@ const HEARTBEAT_INTERVAL = setInterval(() => {
     });
 }, 15000);
 
+/**
+ * 🗄️ Inizializza il database PostgreSQL.
+ *
+ * Cosa fa db.init():
+ * 1. Si connette a PostgreSQL usando DATABASE_URL
+ * 2. Crea le tabelle categorie e domande (se non esistono)
+ * 3. Se le tabelle sono vuote, le popola con i dati di seed.sql
+ *
+ * Se DATABASE_URL è mancante o la connessione fallisce,
+ * il server si ferma con errore (process.exit).
+ *
+ * Nota: l'avvio del WebSocket server (new WebSocketServer) non è
+ * bloccante, quindi le connessioni possono arrivare prima che
+ * db.init() finisca. È sicuro perché i primi messaggi (HELLO,
+ * ADMIN_LOGIN) non usano il database — solo ADMIN_GET_CATEGORIES
+ * e ADMIN_GET_QUESTION dipendono dal DB, e arrivano dopo il login.
+ */
+await db.init();
 console.log(`🚀 Quiz server WebSocket in ascolto sulla porta 3000`);

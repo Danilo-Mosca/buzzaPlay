@@ -213,6 +213,28 @@ export function useQuizSocket(role, onMessage) {
     }
 
     // ================================================================
+    //  ❓ FUNZIONI DOMANDE QUIZ (DATABASE)
+    // ================================================================
+
+    /**
+     * 📋 ADMIN → Richiede la lista delle categorie disponibili.
+     * Il server risponde con { type: 'CATEGORIES', categories: [{id, nome}] }
+     */
+    function getCategories() {
+        safeSend({ type: 'ADMIN_GET_CATEGORIES' });
+    }
+
+    /**
+     * ❓ ADMIN → Richiede una domanda casuale con i filtri specificati.
+     * @param {number|null} categoria_id - ID categoria (null = tutte)
+     * @param {string|null} difficolta - 'facile'|'medio'|'difficile' (null = tutte)
+     * Il server risponde con { type: 'QUESTION', domanda: { id, categoria, difficolta, testo, risposte } }
+     */
+    function getQuestion(categoria_id = null, difficolta = null) {
+        safeSend({ type: 'ADMIN_GET_QUESTION', categoria_id, difficolta });
+    }
+
+    // ================================================================
     //  🎮 FUNZIONI MODALITÀ ASTA FANTACALCIO
     // ================================================================
 
@@ -320,6 +342,10 @@ export function useQuizSocket(role, onMessage) {
         adjustScore,
         removeScore,
         resetScores,
+
+        // Domande Quiz (Database)
+        getCategories,
+        getQuestion,
 
         // Asta Fantacalcio
         setGameMode,
