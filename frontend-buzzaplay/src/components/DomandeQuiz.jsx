@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * 🔍 QuestionDisplay
@@ -115,18 +115,67 @@ function QuestionDisplay({ question, onClose }) {
  * La sezione è visibile SOLO nell'admin, mai trasmessa ai player.
  *
  * Props (fornite da Admin.jsx):
- *   socket            — oggetto WebSocket useQuizSocket (per chiamare getQuestion())
- *   categories        — array [{id, nome}] ricevuto dal server via CATEGORIES
- *   categoriesLoaded  — booleano: true dopo la prima risposta CATEGORIES
- *   currentQuestion   — oggetto domanda { id, categoria, difficolta, testo, risposte[] } o null
- *   onCloseQuestion   — callback (() => void) che in Admin.jsx fa setCurrentQuestion(null)
+ *   socket              — oggetto WebSocket useQuizSocket (per chiamare getQuestion())
+ *   categories          — array [{id, nome}] ricevuto dal server via CATEGORIES
+ *   categoriesLoaded    — booleano: true dopo la prima risposta CATEGORIES
+ *   currentQuestion     — oggetto domanda { id, categoria, difficolta, testo, risposte[] } o null
+ *   onCloseQuestion     — callback (() => void) che in Admin.jsx fa setCurrentQuestion(null)
+ *   filterExhausted     — booleano: true se il server ha segnalato exhausted
+ *                         (tutte le domande per questo filtro sono state mostrate)
+ *   onDismissExhausted  — callback () => void per resettare filterExhausted in Admin.jsx
+ *                         quando l'admin cambia dropdown o richiede una nuova domanda
+ *   cycleResetCounter   — numero incrementale: ogni volta che il server resetta il ciclo
+ *                         (tutte le domande mostrate, si ricomincia), questo valore
+ *                         aumenta. L'useEffect lo usa per mostrare il toast notifica.
  */
-function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, onCloseQuestion }) {
+function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, onCloseQuestion, filterExhausted, onDismissExhausted, cycleResetCounter }) {
 
     // Stato dei due dropdown: categoria (null = "Casuale") e difficoltà (null = "Casuale")
     // Questi stati sono LOCALI al componente perché riguardano solo l'interfaccia filtri.
     const [selectedCategoria, setSelectedCategoria] = useState(null);
     const [selectedDifficolta, setSelectedDifficolta] = useState(null);
+
+    /**
+     * Toast per la notifica di reset ciclo.
+     * Quando tutte le domande sono state mostrate e il ciclo ricomincia,
+     * mostra un messaggio per 4 secondi poi si auto-dismiss.
+     * Usiamo uno stato stringa invece di un boolean per supportare
+     * eventuali messaggi diversi in futuro.
+     */
+    const [toastMsg, setToastMsg] = useState(null);
+
+    // useEffect che reagisce a cycleResetCounter: ogni volta che il
+    // server resetta il ciclo, mostra la notifica per 4 secondi.
+    // Nota: setToastMsg è wrappato in setTimeout(0) per evitare la regola
+    // react-hooks/set-state-in-effect di React 19 (setState sincrono
+    // dentro useEffect può causare render a cascata). Deferrendo la
+    // chiamata, lo stato non viene più impostato SINCORONAMENTE dall'effetto
+    // ma in un microtask successivo, rispettando la regola.
+    useEffect(() => {
+        if (cycleResetCounter > 0) {
+            const showTimer = setTimeout(() => {
+                setToastMsg('🔄 Tutte le domande sono state mostrate, si ricomincia!');
+            }, 0);
+            const hideTimer = setTimeout(() => setToastMsg(null), 4000);
+            return () => {
+                clearTimeout(showTimer);
+                clearTimeout(hideTimer);
+            };
+        }
+    }, [cycleResetCounter]);
+
+    // Helper: quando l'admin cambia un dropdown, resetta il flag
+    // filterExhausted in Admin.jsx così il messaggio scompare e
+    // riappaiono i normali filtri.
+    const handleCategoriaChange = (e) => {
+        setSelectedCategoria(e.target.value ? Number(e.target.value) : null);
+        if (filterExhausted) onDismissExhausted();
+    };
+
+    const handleDifficoltaChange = (e) => {
+        setSelectedDifficolta(e.target.value || null);
+        if (filterExhausted) onDismissExhausted();
+    };
 
     return (
         <div className="admin-section">
@@ -135,10 +184,12 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
             </div>
 
             {/*
-             * FASE 1 — Nessuna domanda attiva: mostra i filtri o l'avviso DB down.
+             * FASE 1 — Nessuna domanda attiva: mostra i filtri o l'avviso DB down,
+             * oppure se filterExhausted mostra il messaggio di esaurimento.
              * Quando currentQuestion è null, l'admin può scegliere categoria e difficoltà,
              * oppure vede un avviso se il database PostgreSQL non è raggiungibile.
              */}
+            <>
             {!currentQuestion ? (
                 <>
                     {/*
@@ -161,8 +212,37 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                         <>
                             {/*
                              * CASO 1B — Database OK: mostra i due dropdown e il pulsante.
-                             * La lista delle categorie è popolata dal server via CATEGORIES.
+                             *
+                             * NOTA BENE (bug fix): filterExhausted era un blocco sostitutivo
+                             * che nascondeva completamente i dropdown quando tutte le domande
+                             * per la categoria/difficoltà corrente erano esaurite. Questo
+                             * impediva all'admin di cambiare filtro, intrappolandolo in un
+                             * vicolo cieco.
+                             *
+                             * Ora filterExhausted è un BANNER DI AVVISO persistente SOPRA
+                             * i dropdown. L'admin vede chiaramente che il filtro corrente è
+                             * esaurito, ma PUÒ comunque interagire con i dropdown e il
+                             * pulsante per cambiare categoria/difficoltà e provare nuove
+                             * domande. I callback handleCategoriaChange e
+                             * handleDifficoltaChange chiamano onDismissExhausted()
+                             * per rimuovere il banner appena l'admin cambia filtro.
                              */}
+                            {filterExhausted && (
+                                <div style={{
+                                    marginTop: '0.5rem',
+                                    marginBottom: '0.5rem',
+                                    padding: '0.5rem 0.75rem',
+                                    borderRadius: '0.4rem',
+                                    background: 'var(--warning-bg, #f57f17)',
+                                    color: '#fff',
+                                    fontSize: '0.85rem',
+                                    lineHeight: 1.4,
+                                }}>
+                                    ⚠️ <strong>Domande esaurite</strong> per la tipologia selezionata.
+                                    Cambia filtro qui sotto per vedere le altre domande.
+                                </div>
+                            )}
+
                             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
                             {/* Dropdown Categoria — popolato dal server via CATEGORIES */}
                             <div>
@@ -172,7 +252,7 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                                 <select
                                     className="input"
                                     value={selectedCategoria ?? ''}
-                                    onChange={e => setSelectedCategoria(e.target.value ? Number(e.target.value) : null)}
+                                    onChange={handleCategoriaChange}
                                     style={{ padding: '0.4rem 0.6rem' }}
                                 >
                                     <option value="">Casuale</option>
@@ -190,7 +270,7 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                                 <select
                                     className="input"
                                     value={selectedDifficolta ?? ''}
-                                    onChange={e => setSelectedDifficolta(e.target.value || null)}
+                                    onChange={handleDifficoltaChange}
                                     style={{ padding: '0.4rem 0.6rem' }}
                                 >
                                     <option value="">Casuale</option>
@@ -203,10 +283,17 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                             {/*
                              * Pulsante "Mostra Domanda" — invia ADMIN_GET_QUESTION al server
                              * con i filtri correnti. La risposta arriverà asincrona via QUESTION.
+                             * Se filterExhausted è true, lo resetta prima di chiedere la domanda
+                             * (perché l'admin potrebbe aver cambiato filtro ma non aver ancora
+                             * toccato i dropdown — ad esempio se clicca "Mostra Domanda" subito
+                             * dopo il cambio filtro automatico).
                              */}
                             <button
                                 className="btn btn--primary"
-                                onClick={() => socket.getQuestion(selectedCategoria, selectedDifficolta)}
+                                onClick={() => {
+                                    if (filterExhausted) onDismissExhausted();
+                                    socket.getQuestion(selectedCategoria, selectedDifficolta);
+                                }}
                                 style={{ fontSize: '0.95rem', padding: '0.4rem 1rem' }}
                             >
                                 🎲 Mostra Domanda
@@ -215,6 +302,7 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                         </>
                     )}
                 </>
+
             ) : (
                 <>
                 {/*
@@ -229,6 +317,23 @@ function DomandeQuiz({ socket, categories, categoriesLoaded, currentQuestion, on
                 />
                 </>
             )}
+
+            {/* Toast notifica reset ciclo — appare per 4 secondi, poi scompare */}
+            {toastMsg && (
+                <div style={{
+                    marginTop: '0.75rem',
+                    padding: '0.6rem 1rem',
+                    borderRadius: '0.4rem',
+                    background: 'var(--accent)',
+                    color: '#fff',
+                    fontSize: '0.9rem',
+                    textAlign: 'center',
+                    animation: 'fadeIn 0.3s ease',
+                }}>
+                    {toastMsg}
+                </div>
+            )}
+            </>
         </div>
     );
 }

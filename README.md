@@ -198,7 +198,8 @@ npm run dev -- --host
 | `ADMIN_GET_CATEGORIES` | → server | Richiede la lista delle categorie (solo admin) |
 | `ADMIN_GET_QUESTION` | → server | Richiede una domanda con filtri categoria/difficoltà (solo admin) |
 | `CATEGORIES` | ← server | Lista delle categorie disponibili |
-| `QUESTION` | ← server | Domanda con 4 risposte mescolate |
+| `QUESTION` | ← server | Domanda con 4 risposte mescolate (o `exhausted: true` se filtro esaurito) |
+| `QUESTION_CYCLE_RESET` | ← server | Tutte le domande mostrate, ciclo di non-ripetizione resettato |
 
 ## Tecnologie
 

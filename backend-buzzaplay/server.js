@@ -6,9 +6,9 @@ import db from './db/index.js';
 
 // Creiamo un server WebSocket che ascolta sulla porta 3000
 // Prima del deploy per il locale:
-// const wss = new WebSocketServer({ port: 3000 });
+const wss = new WebSocketServer({ port: 3000 });
 // Dopo il deploy visibile su Render.com:
-const wss = new WebSocketServer({ host: '127.0.0.1', port: 3000 });
+// const wss = new WebSocketServer({ host: '127.0.0.1', port: 3000 });
 
 /**
  * 🔐 PASSWORD ADMIN (da .env)
@@ -47,6 +47,47 @@ const scores = new Map();
  * erroneamente il player da connectedPlayers.
  */
 const activeSockets = new Map();
+
+/**
+ * 🃏 Domande già mostrate — ciclo di non-ripetizione (Set di ID).
+ *
+ * Quando l'admin richiede una domanda via ADMIN_GET_QUESTION, l'ID della
+ * domanda viene aggiunto a questo Set. La query SQL esclude tutti questi ID
+ * tramite la clausola AND d.id != ALL($3::int[]) — ogni domanda appare al
+ * massimo UNA VOLTA per ciclo.
+ *
+ * Quando il numero di ID nel Set raggiunge il totale delle domande nel DB,
+ * il ciclo si considera completo: il Set viene svuotato e l'admin riceve
+ * una notifica QUESTION_CYCLE_RESET. A questo punto tutte le domande
+ * tornano disponibili e il ciclo riparte.
+ *
+ * Il Set è in memoria RAM: a ogni riavvio del server tutte le domande
+ * tornano disponibili da capo (intenzionale, party game occasionale).
+ *
+ * Inoltre, alla disconnessione dell'admin (logout, refresh, chiusura
+ * pagina), il Set viene svuotato automaticamente (vedi handler close).
+ * Questo evita che un admin che si riconnette in un secondo momento
+ * trovi ancora i vecchi ID bloccanti, senza dover riavviare il server.
+ */
+const shownQuestionIds = new Set();
+
+/**
+ * 📊 Conta il numero totale di domande nel database PostgreSQL.
+ *
+ * Chiamata a ogni ADMIN_GET_QUESTION per confrontare quante domande sono
+ * state già mostrate (shownQuestionIds.size) con il totale disponibile.
+ * Se DB non connesso, restituisce 0 e il controllo ciclo viene saltato.
+ *
+ * @returns {Promise<number>} Totale domande nel DB (0 se non connesso)
+ */
+async function getTotalQuestionsCount() {
+    try {
+        const result = await db.query('SELECT COUNT(*) AS cnt FROM domande');
+        return parseInt(result.rows[0]?.cnt || '0', 10);
+    } catch {
+        return 0;
+    }
+}
 
 /* ============================================================
    STATO MODALITÀ ASTA FANTACALCIO (NUOVO)
@@ -151,6 +192,22 @@ wss.on('connection', (ws) => {
         if (data.type === 'ADMIN_LOGIN') {
             if (data.password === ADMIN_PASSWORD) {
                 ws.role = 'admin';
+
+                // Resetta il ciclo di non-ripetizione delle domande a ogni
+                // nuovo login admin. Questo è CRUCIALE perché la WebSocket
+                // NON si chiude quando l'admin fa logout (Admin.jsx torna
+                // al login screen ma lo stesso socket rimane aperto).
+                // Senza questo reset, se l'admin aveva esaurito tutte le
+                // domande di una categoria/difficoltà, anche dopo aver
+                // fatto logout e rieffettuato il login, il server avrebbe
+                // ancora i vecchi ID nel Set e risponderebbe sempre con
+                // exhausted: true, impedendo all'admin di rivedere quelle
+                // domande fino al riavvio del server.
+                // Il Set viene già pulito anche alla disconnessione effettiva
+                // della socket (handler close), ma questa doppia protezione
+                // copre TUTTI i casi d'uso: logout senza close, chiusura
+                // tab, refresh, e riconnessione dopo timeout Render.
+                shownQuestionIds.clear();
 
                 ws.send(JSON.stringify({
                     type: 'ADMIN_OK'
@@ -537,14 +594,28 @@ wss.on('connection', (ws) => {
          *   categoria_id  → filtra per categoria specifica
          *   difficolta    → filtra per 'facile'/'medio'/'difficile'
          *
-         * La query SQL usa WHERE con OR $1 IS NULL per rendere i filtri
-         * opzionali: se categoria_id è null, vengono prese TUTTE le categorie.
+         * FLUSSO DI ESECUZIONE (4 fasi):
          *
-         * ORDER BY RANDOM() + LIMIT 1 → prende una riga casuale.
+         * 1. CONTROLLO CICLO — Se tutte le domande del DB sono state mostrate
+         *    (shownQuestionIds.size >= totalCount), resetta il Set e invia
+         *    QUESTION_CYCLE_RESET all'admin. Ogni domanda appare UNA VOLTA.
          *
-         * Le 4 risposte (1 corretta + 3 errate) vengono poi mischiate
-         * con l'algoritmo Fisher-Yates prima di essere inviate, così
-         * l'ordine è sempre imprevedibile.
+         * 2. QUERY CON ESCLUSIONE — AND d.id != ALL($3::int[]) esclude gli
+         *    ID già in shownQuestionIds. ALL(ARRAY[...]) confronta d.id con
+         *    OGNI elemento; != ALL significa "diverso da tutti". Se l'array
+         *    è vuoto (primo ciclo), la condizione è vacuamente VERA.
+         *    ::int[] dice a PostgreSQL che $3 è un array di interi.
+         *
+         * 3. FILTRO ESAURITO — Se 0 righe (tutte le domande di quel filtro
+         *    sono state mostrate, ma il ciclo globale non è finito), risponde
+         *    con { exhausted: true }. Frontend mostra messaggio specifico.
+         *
+         * 4. DOMANDA VALIDA — Aggiunge l'ID al Set, mescola le 4 risposte
+         *    con Fisher-Yates e invia la domanda all'admin.
+         *
+         * La query SQL usa WHERE con OR $1 IS NULL per filtri opzionali:
+         * se categoria_id è null, vengono prese TUTTE le categorie.
+         * ORDER BY RANDOM() + LIMIT 1 → riga casuale.
          */
         if (data.type === 'ADMIN_GET_QUESTION') {
             // Solo gli admin autenticati possono richiedere domande
@@ -555,8 +626,37 @@ wss.on('connection', (ws) => {
             const { categoria_id = null, difficolta = null } = data;
 
             try {
-                // Query parametrizzata: i filtri sono opzionali grazie a OR $1 IS NULL
-                // ORDER BY RANDOM() + LIMIT 1 seleziona una domanda casuale
+                // ─── FASE 1: CONTROLLO CICLO COMPLETO ───
+                // Confronta quante domande sono state mostrate con il totale
+                // nel DB. Se il ciclo è completo, resetta e notifica.
+                const totalCount = await getTotalQuestionsCount();
+                if (totalCount > 0 && shownQuestionIds.size >= totalCount) {
+                    shownQuestionIds.clear();
+                    console.log('🔄 Ciclo domande completato, reset...');
+                    ws.send(JSON.stringify({
+                        type: 'QUESTION_CYCLE_RESET'
+                    }));
+                }
+
+                // ─── FASE 2: QUERY CON ESCLUSIONE ───
+                // Copia il Set in array per passarlo come parametro SQL.
+                // Array vuoto = nessuna esclusione (ALL(ARRAY[]) è VERO).
+                const excludedIds = [...shownQuestionIds];
+
+                // Query parametrizzata con 3 parametri:
+                //   $1 — categoria_id (opzionale, OR $1 IS NULL)
+                //   $2 — difficolta (opzionale, OR $2 IS NULL)
+                //   $3 — array di ID da escludere (evita domande già viste)
+                //
+                // AND d.id != ALL($3::int[]) — significato nel dettaglio:
+                //   ALL(ARRAY[7, 12, 45]) crea un insieme di valori {7, 12, 45}
+                //   != ALL significa "d.id è diverso da OGNI elemento dell'insieme"
+                //   Equivale a: d.id != 7 AND d.id != 12 AND d.id != 45
+                //   ::int[] è il CAST che dice a PostgreSQL "questo parametro
+                //   è un array di interi" (necessario per usare ALL()).
+                //   Se l'array è VUOTO ([ ]), ALL(ARRAY[]) è vacuamente VERO
+                //   per ogni riga — nessun elemento da confrontare, nessuna
+                //   esclusione. Perfetto per il primo giro del ciclo.
                 const result = await db.query(
                     `SELECT d.id, d.difficolta, d.domanda,
                             d.risposta_corretta, d.risposta_errata_1,
@@ -566,24 +666,37 @@ wss.on('connection', (ws) => {
                      JOIN categorie c ON d.categoria_id = c.id
                      WHERE (c.id = $1 OR $1 IS NULL)
                        AND (d.difficolta = $2 OR $2 IS NULL)
+                       AND d.id != ALL($3::int[])
                      ORDER BY RANDOM()
                      LIMIT 1`,
-                    [categoria_id, difficolta]
+                    [categoria_id, difficolta, excludedIds]
                 );
 
-                // Nessuna domanda trovata con questi filtri
+                // ─── FASE 3: FILTRO ESAURITO ───
+                // 0 righe significa che TUTTE le domande corrispondenti ai
+                // filtri correnti sono state già mostrate. Non è un errore
+                // globale — ci sono ancora domande in altre categorie —
+                // ma questo specifico filtro non ha più domande inedite.
+                //
+                // exhausted: true segnala al frontend di mostrare il
+                // messaggio "Domande esaurite per la tipologia selezionata".
                 if (result.rows.length === 0) {
                     ws.send(JSON.stringify({
                         type: 'QUESTION',
-                        domanda: null  // Il frontend mostrerà "Nessuna domanda trovata"
+                        domanda: null,
+                        exhausted: true
                     }));
                     return;
                 }
 
+                // ─── FASE 4: DOMANDA VALIDA ───
+                // Aggiunge l'ID al Set per escluderlo dalle prossime richieste
+                const row = result.rows[0];
+                shownQuestionIds.add(row.id);
+
                 // Costruisce l'array delle 4 risposte con flag corretta
                 // La risposta corretta è sempre la prima, le errate dopo
                 // (verranno mischiate subito dopo)
-                const row = result.rows[0];
                 const risposte = [
                     { testo: row.risposta_corretta, corretta: true },
                     { testo: row.risposta_errata_1, corretta: false },
@@ -1008,6 +1121,18 @@ wss.on('connection', (ws) => {
      * 3. Rimuoviamo solo da connectedPlayers e activeSockets.
      */
     ws.on('close', () => {
+        // 🔐 ADMIN DISCONNESSO: resetta il ciclo di non-ripetizione delle domande.
+        // Quando l'admin fa logout (o refresh/chiude la pagina), il Set
+        // shownQuestionIds viene svuotato. Questo garantisce che al prossimo
+        // login l'admin ricominci con tutte le domande disponibili, senza
+        // dover riavviare il server. Nota: gli admin non hanno playerId
+        // (non passano da HELLO), quindi controlliamo il ruolo direttamente.
+        if (ws.role === 'admin') {
+            shownQuestionIds.clear();
+            console.log(`🔐 Admin disconnesso — ciclo domande resettato (${shownQuestionIds.size} ID rimasti)`);
+            return;
+        }
+
         if (!ws.playerId) {
             console.log(`🔴 ${ws.role || '?'} "${ws.playerName || 'Sconosciuto'}" disconnesso (mai registrato)`);
             return;

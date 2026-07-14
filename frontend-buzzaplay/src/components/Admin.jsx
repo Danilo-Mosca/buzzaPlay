@@ -27,6 +27,29 @@ function Admin() {
     const [categories, setCategories] = useState([]);
     const [categoriesLoaded, setCategoriesLoaded] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(null);
+    /**
+     * 🔁 Filtro domande esaurito — flag per notificare l'utente.
+     * Quando il server risponde con exhausted: true, significa che
+     * tutte le domande per la categoria/difficoltà selezionata sono
+     * state già mostrate. Questo stato viene passato a DomandeQuiz
+     * per mostrare il messaggio "Domande esaurite per la tipologia
+     * selezionata" al posto dei normali filtri.
+     * Si resetta quando l'admin cambia i dropdown o clicca
+     * "Mostra Domanda" con un filtro diverso.
+     */
+    const [filterExhausted, setFilterExhausted] = useState(false);
+
+    /**
+     * 🔄 Contatore cicli di reset — trigger per la notifica toast.
+     * Ogni volta che il server resetta il ciclo (tutte le domande
+     * mostrate, si ricomincia), incrementa questo contatore.
+     * DomandeQuiz lo usa come dipendenza in useEffect per mostrare
+     * il toast "🔄 Tutte le domande sono state mostrate, si ricomincia!"
+     * con auto-dismiss dopo 4 secondi. L'uso di un contatore invece
+     * di un boolean garantisce che l'effect si attivi anche se il
+     * reset avviene due volte di fila (il nuovo valore è sempre diverso).
+     */
+    const [cycleResetCounter, setCycleResetCounter] = useState(0);
     const [auctionEnded, setAuctionEnded] = useState(false);
     const [auctionState, setAuctionState] = useState({
         active: false,
@@ -48,8 +71,19 @@ function Admin() {
         // il dropdown "Categoria" nella sezione Domande Quiz.
         // Questo avviene sia al primo login che dopo riconnessione automatica
         // (grazie al re-invio di ADMIN_LOGIN via onReconnect).
+        //
+        // NOTA BENE: resettiamo filterExhausted e currentQuestion per
+        // coprire il caso in cui l'admin avesse esaurito una categoria
+        // nella sessione precedente. Anche se il server ha pulito
+        // shownQuestionIds (sul nuovo ADMIN_LOGIN), senza questo reset
+        // il frontend manterrebbe filterExhausted = true e il banner
+        // "esaurite" resterebbe visibile, confondendo l'admin.
+        // La chiamata a handleAdminOk() eventualmente setta isAdmin = true,
+        // ma non tocca questi due stati specifici.
         if (msg.type === 'ADMIN_OK') {
             handleAdminOk();
+            setFilterExhausted(false);
+            setCurrentQuestion(null);
             socket.getCategories();
             return;
         }
@@ -195,10 +229,24 @@ function Admin() {
         // QUESTION: arriva dal server dopo ADMIN_GET_QUESTION
         // Contiene { id, categoria, difficolta, testo, risposte[{testo, corretta}] }
         // Se msg.domanda è null → nessuna domanda corrisponde ai filtri
+        // Se msg.exhausted è true → tutte le domande per questo filtro sono state mostrate
         // Nota: il reset di revealed non serve più qui perché gestito internamente
         // da DomandeQuiz.jsx tramite key={currentQuestion.id} su QuestionDisplay.
         if (msg.type === 'QUESTION') {
             setCurrentQuestion(msg.domanda);
+            if (msg.domanda === null) {
+                // exhausted: true = filtro esaurito (tutte le domande per
+                // questa categoria/difficoltà sono state mostrate)
+                setFilterExhausted(msg.exhausted || false);
+            }
+        }
+
+        // QUESTION_CYCLE_RESET: il server ha resettato il ciclo di
+        // non-ripetizione (tutte le domande sono state mostrate, si
+        // ricomincia da capo). Incrementa il contatore per triggerare
+        // la notifica toast in DomandeQuiz.
+        if (msg.type === 'QUESTION_CYCLE_RESET') {
+            setCycleResetCounter(prev => prev + 1);
         }
     });
 
@@ -313,6 +361,9 @@ function Admin() {
                         categoriesLoaded={categoriesLoaded}
                         currentQuestion={currentQuestion}
                         onCloseQuestion={() => setCurrentQuestion(null)}
+                        filterExhausted={filterExhausted}
+                        onDismissExhausted={() => setFilterExhausted(false)}
+                        cycleResetCounter={cycleResetCounter}
                     />
                     {/* ===== FINE SEZIONE DOMANDE QUIZ ===== */}
 
