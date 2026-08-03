@@ -327,7 +327,7 @@ VALUES
 'Atene',
 'Cartagine',
 'Troia'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
@@ -788,7 +788,7 @@ VALUES
 'Arancione',
 'Viola',
 'Rosso'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Arte'),
@@ -1249,7 +1249,7 @@ VALUES
 'Porto',
 'Braga',
 'Faro'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Geografia'),
@@ -1710,7 +1710,7 @@ VALUES
 'Azoto',
 'Elio',
 'Metano'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Scienze'),
@@ -2171,7 +2171,7 @@ VALUES
 'Snowboard',
 'Sci',
 'Skateboard'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
@@ -2632,7 +2632,7 @@ VALUES
 'Shrek',
 'Madagascar',
 'Kung Fu Panda'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Cinema'),
@@ -3093,7 +3093,7 @@ VALUES
 'Justin Bieber',
 'Sam Smith',
 'Shawn Mendes'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Musica'),
@@ -3554,7 +3554,7 @@ VALUES
 'F. Scott Fitzgerald',
 'John Steinbeck',
 'Herman Melville'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Letteratura'),
@@ -4015,7 +4015,7 @@ VALUES
 'HTML',
 'CSS',
 'XML'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
@@ -4476,7 +4476,7 @@ VALUES
 'Diabolik',
 'Tintin',
 'Zagor'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
@@ -4937,7 +4937,7 @@ VALUES
 'Charizard',
 'Mewtwo',
 'Eevee'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
@@ -5062,7 +5062,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'difficile',
-'Quale software house sviluppò Origin of Species... scherzo 😄. Quale studio sviluppò The Witcher 3: Wild Hunt?',
+'Quale studio sviluppò The Witcher 3: Wild Hunt?',
 'CD Projekt RED',
 'Larian Studios',
 'BioWare',
@@ -5313,11 +5313,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'facile',
-'Qual è la capitale della Francia?',
-'Parigi',
-'Lione',
-'Marsiglia',
-'Nizza'
+'Come si chiama l''attuale forma istituzionale della Repubblica francese?',
+'Quinta Repubblica',
+'Terza Repubblica',
+'Quarta Repubblica',
+'Sesta Repubblica'
 ),
 
 (
@@ -5398,7 +5398,7 @@ VALUES
 'Ginevra',
 'Parigi',
 'Roma'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
@@ -5859,7 +5859,7 @@ VALUES
 'Bluetooth',
 'GPS',
 'USB'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
@@ -6320,7 +6320,7 @@ VALUES
 'Charles Darwin',
 'Albert Einstein',
 'Sigmund Freud'
-);
+),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
