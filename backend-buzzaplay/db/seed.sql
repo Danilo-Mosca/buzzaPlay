@@ -722,16 +722,6 @@ VALUES
 
 (
 (SELECT id FROM categorie WHERE nome = 'Arte'),
-'facile',
-'Quale artista dipinse il soffitto della Cappella Sistina?',
-'Michelangelo',
-'Raffaello',
-'Caravaggio',
-'Leonardo'
-),
-
-(
-(SELECT id FROM categorie WHERE nome = 'Arte'),
 'medio',
 'Quale movimento artistico italiano celebrava velocità e tecnologia?',
 'Futurismo',
@@ -3108,16 +3098,6 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Musica'),
 'difficile',
-'Quale gruppo pubblicò nel 1973 l''album "The Dark Side of the Moon"?',
-'Pink Floyd',
-'Genesis',
-'Yes',
-'King Crimson'
-),
-
-(
-(SELECT id FROM categorie WHERE nome = 'Musica'),
-'difficile',
 'Quale compositore scrisse il poema sinfonico "Così parlò Zarathustra"?',
 'Richard Strauss',
 'Gustav Mahler',
@@ -3324,16 +3304,6 @@ VALUES
 'Gianni Rodari',
 'Emilio Salgari',
 'Edmondo De Amicis'
-),
-
-(
-(SELECT id FROM categorie WHERE nome = 'Letteratura'),
-'medio',
-'Chi è l''autore della Divina Commedia, opera divisa in Inferno, Purgatorio e Paradiso?',
-'Dante Alighieri',
-'Virgilio',
-'Omero',
-'Petrarca'
 ),
 
 (
