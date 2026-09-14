@@ -142,7 +142,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'medio',
-'Quale impero aveva Costantinopoli come capitale?',
+'Quale impero medievale di lingua prevalentemente greca ebbe Costantinopoli come capitale?',
 'Impero Bizantino',
 'Impero Romano d''Occidente',
 'Impero Ottomano',
@@ -292,8 +292,8 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'medio',
-'Quale esploratore completò la prima circumnavigazione del globo?',
-'Ferdinando Magellano',
+'Quale navigatore completò la prima circumnavigazione del globo dopo la morte di Ferdinando Magellano?',
+'Juan Sebastián Elcano',
 'Cristoforo Colombo',
 'Vasco da Gama',
 'James Cook'
@@ -382,11 +382,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'difficile',
-'Quale fu il principale artefice delle riforme che portarono alla Restaurazione Meiji in Giappone?',
-'Mutsuhito',
-'Tokugawa Ieyasu',
-'Toyotomi Hideyoshi',
-'Oda Nobunaga'
+'Con quale nome postumo è noto l''imperatore giapponese Mutsuhito?',
+'Imperatore Meiji',
+'Imperatore Taishō',
+'Imperatore Shōwa',
+'Imperatore Kōmei'
 ),
 
 (
@@ -412,17 +412,17 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'difficile',
-'Quale stato europeo diede origine alla dinastia degli Asburgo?',
-'Ducato d''Austria',
-'Regno d''Ungheria',
-'Regno di Boemia',
-'Ducato di Baviera'
+'In quale regione dell''attuale Svizzera sorge il castello da cui prese il nome la dinastia degli Asburgo?',
+'Canton Argovia',
+'Canton Berna',
+'Canton Zurigo',
+'Canton Lucerna'
 ),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'difficile',
-'Quale conferenza del 1945 stabilì gran parte dell''assetto dell''Europa nel dopoguerra?',
+'Quale conferenza del febbraio 1945 riunì Churchill, Roosevelt e Stalin in Crimea?',
 'Conferenza di Jalta',
 'Conferenza di Potsdam',
 'Conferenza di Teheran',
@@ -442,7 +442,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Storia'),
 'difficile',
-'Quale città fu la prima capitale dell''Impero ottomano?',
+'Quale città divenne capitale ottomana nel 1326, dopo la sua conquista da parte di Orhan I?',
 'Bursa',
 'Edirne',
 'Ankara',
@@ -663,7 +663,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Arte'),
 'facile',
-'Chi realizzò la scultura del Baldacchino di San Pietro?',
+'Chi progettò e realizzò il monumentale Baldacchino di San Pietro?',
 'Gian Lorenzo Bernini',
 'Michelangelo',
 'Canova',
@@ -928,6 +928,16 @@ VALUES
 'Hans Holbein il Giovane',
 'Lucas Cranach il Vecchio',
 'Matthias Grünewald'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale pittore surrealista realizzò "La persistenza della memoria"?',
+'Salvador Dalí',
+'René Magritte',
+'Joan Miró',
+'Max Ernst'
 );
 
 INSERT INTO domande (
@@ -1088,7 +1098,7 @@ VALUES
 'Giappone',
 'Cina',
 'Corea del Sud',
-'Tailandia'
+'Thailandia'
 ),
 
 (
@@ -1157,8 +1167,8 @@ VALUES
 'Qual è la capitale del Brasile?',
 'Brasilia',
 'Rio de Janeiro',
-'San Paolo',
-'São Paulo'
+'Salvador',
+'Belo Horizonte'
 ),
 
 (
@@ -1184,11 +1194,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Geografia'),
 'medio',
-'Quale Stato americano è famoso per la città di New York?',
-'Stati Uniti',
-'Canada',
-'Messico',
-'Brasile'
+'In quale Stato federato degli Stati Uniti si trova la metropoli soprannominata "Grande Mela"?',
+'New York',
+'New Jersey',
+'Massachusetts',
+'Pennsylvania'
 ),
 
 (
@@ -1334,11 +1344,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Geografia'),
 'difficile',
-'Quale capitale europea è attraversata contemporaneamente dal Danubio e dal Canale Danubio-Meno-Reno?',
-'Vienna',
+'Quale capitale europea sorge alla confluenza dei fiumi Sava e Danubio?',
+'Belgrado',
 'Bratislava',
 'Budapest',
-'Belgrado'
+'Vienna'
 ),
 
 (
@@ -1765,21 +1775,21 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Scienze'),
 'difficile',
-'Quale vitamina è sintetizzata principalmente grazie all''esposizione della pelle ai raggi UVB?',
-'Vitamina D',
-'Vitamina A',
-'Vitamina K',
-'Vitamina E'
+'Quale enzima sintetizza una molecola di RNA usando il DNA come stampo?',
+'RNA polimerasi',
+'DNA polimerasi',
+'Ribosoma',
+'Trascrittasi inversa'
 ),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Scienze'),
 'difficile',
-'Quale gas costituisce circa il 78% dell''atmosfera terrestre?',
-'Azoto',
-'Ossigeno',
-'Argon',
-'Anidride carbonica'
+'Quale unità derivata del Sistema Internazionale misura l''attività catalitica?',
+'Katal',
+'Becquerel',
+'Siemens',
+'Weber'
 ),
 
 (
@@ -1795,7 +1805,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Scienze'),
 'difficile',
-'Quale pianeta del Sistema Solare possiede il maggior numero di satelliti naturali conosciuti?',
+'Attorno a quale pianeta del Sistema Solare orbita Titano?',
 'Saturno',
 'Giove',
 'Urano',
@@ -1916,7 +1926,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'facile',
-'Quanti punti vale un canestro da tre punti nel basket?',
+'Quanti punti vale nel basket un canestro realizzato oltre la linea dell''arco?',
 '3',
 '2',
 '1',
@@ -1936,7 +1946,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'medio',
-'Quale tennista ha vinto più titoli del Grande Slam maschili?',
+'Quale tennista è diventato nel 2023 il primo uomo a vincere 24 titoli del Grande Slam in singolare?',
 'Novak Djokovic',
 'Roger Federer',
 'Rafael Nadal',
@@ -1966,7 +1976,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'medio',
-'Quale pilota ha vinto sette titoli mondiali di Formula 1?',
+'Quale pilota britannico ha vinto sette titoli mondiali di Formula 1?',
 'Lewis Hamilton',
 'Fernando Alonso',
 'Ayrton Senna',
@@ -1996,7 +2006,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'medio',
-'Quale nazionale ha vinto più Coppe del Mondo di calcio?',
+'Quale nazionale ha conquistato cinque Coppe del Mondo di calcio tra il 1958 e il 2002?',
 'Brasile',
 'Italia',
 'Germania',
@@ -2006,7 +2016,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'facile',
-'Quale sport pratica Michael Jordan?',
+'Per quale sport è celebre soprattutto Michael Jordan?',
 'Basket',
 'Baseball',
 'Golf',
@@ -2076,7 +2086,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'facile',
-'Quale sport pratica Valentino Rossi?',
+'Per quale disciplina motociclistica è celebre Valentino Rossi?',
 'MotoGP',
 'Formula 1',
 'Rally',
@@ -2106,7 +2116,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'medio',
-'Quale atleta italiana ha vinto l''oro olimpico nei 100 metri a Tokyo 2020?',
+'Quale atleta italiano ha vinto l''oro olimpico nei 100 metri a Tokyo 2020?',
 'Marcell Jacobs',
 'Gianmarco Tamberi',
 'Filippo Tortu',
@@ -2116,7 +2126,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'facile',
-'Quale sport è associato alla Coppa America?',
+'A quale sport appartiene la Copa América organizzata dalla CONMEBOL?',
 'Calcio',
 'Basket',
 'Tennis',
@@ -2126,7 +2136,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'medio',
-'Quale squadra ha vinto più Champions League nella storia?',
+'Quale club deteneva nel 2024 il record di 15 vittorie nella Coppa dei Campioni/Champions League?',
 'Real Madrid',
 'Milan',
 'Liverpool',
@@ -2206,11 +2216,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Sport'),
 'difficile',
-'Quale disciplina NON fa parte del pentathlon moderno?',
-'Tiro con l''arco',
+'Quale disciplina sarà sostituita dalla corsa a ostacoli nel pentathlon moderno dei Giochi di Los Angeles 2028?',
+'Equitazione',
 'Scherma',
 'Nuoto',
-'Equitazione'
+'Laser run'
 ),
 
 (
@@ -2517,7 +2527,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Cinema'),
 'facile',
-'Quale saga cinematografica racconta la lotta tra vampiri e licantropi?',
+'Quale saga cinematografica iniziata nel 2003 ha come protagonista la guerriera vampira Selene?',
 'Underworld',
 'Twilight',
 'Blade',
@@ -2667,7 +2677,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Cinema'),
 'difficile',
-'Quale film di Stanley Kubrick è tratto dal romanzo "Il dottor Stranamore"?',
+'Quale film di Stanley Kubrick fu liberamente ispirato al romanzo "Red Alert" di Peter George?',
 'Il dottor Stranamore - Ovvero: come imparai a non preoccuparmi e ad amare la bomba',
 '2001: Odissea nello spazio',
 'Arancia meccanica',
@@ -2828,7 +2838,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Musica'),
 'medio',
-'Quale compositore ha scritto la Nona Sinfonia?',
+'Quale compositore scrisse la Nona Sinfonia che include l''"Inno alla gioia"?',
 'Ludwig van Beethoven',
 'Wolfgang Amadeus Mozart',
 'Johann Sebastian Bach',
@@ -2868,7 +2878,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Musica'),
 'medio',
-'Chi è l''autore dell''opera Le quattro stagioni?',
+'Chi è l''autore del ciclo di concerti "Le quattro stagioni"?',
 'Antonio Vivaldi',
 'Mozart',
 'Chopin',
@@ -3058,7 +3068,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Musica'),
 'facile',
-'Quale gruppo italiano ha cantato L''italiano?',
+'Quale cantante italiano ha interpretato L''italiano?',
 'Toto Cutugno',
 'Pooh',
 'Nomadi',
@@ -3223,6 +3233,16 @@ VALUES
 'Monterey Pop Festival',
 'Isle of Wight Festival',
 'Live Aid'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositore elaborò il metodo dodecafonico basato su una serie di dodici suoni?',
+'Arnold Schönberg',
+'Igor Stravinskij',
+'Claude Debussy',
+'Béla Bartók'
 );
 
 INSERT INTO domande (
@@ -3489,7 +3509,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Letteratura'),
 'facile',
-'Quale personaggio è protagonista del romanzo Robinson Crusoe?',
+'Quale personaggio di Daniel Defoe naufraga e vive per anni su un''isola deserta?',
 'Robinson Crusoe',
 'Gulliver',
 'Oliver Twist',
@@ -3559,17 +3579,17 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Letteratura'),
 'difficile',
-'Quale autore scrisse il romanzo "Il nome della rosa"?',
-'Umberto Eco',
-'Leonardo Sciascia',
-'Italo Calvino',
-'Primo Levi'
+'Quale romanzo di Italo Calvino coinvolge un Lettore che tenta ripetutamente di iniziare un libro?',
+'Se una notte d''inverno un viaggiatore',
+'Il castello dei destini incrociati',
+'Le città invisibili',
+'Palomar'
 ),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Letteratura'),
 'difficile',
-'Quale tragedia di Shakespeare racconta la congiura contro Giulio Cesare?',
+'Quale tragedia di Shakespeare ha per protagonista il condottiero romano assassinato alle Idi di marzo?',
 'Giulio Cesare',
 'Antonio e Cleopatra',
 'Coriolano',
@@ -3674,6 +3694,16 @@ VALUES
 'I demoni',
 'I fratelli Karamazov',
 'Memorie dal sottosuolo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale autore italiano scrisse il romanzo "Il barone rampante"?',
+'Italo Calvino',
+'Dino Buzzati',
+'Cesare Pavese',
+'Alberto Moravia'
 );
 
 INSERT INTO domande (
@@ -3690,7 +3720,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'facile',
-'Chi è considerato il fondatore di Microsoft?',
+'Chi fondò Microsoft insieme a Paul Allen?',
 'Bill Gates',
 'Steve Jobs',
 'Mark Zuckerberg',
@@ -3810,7 +3840,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'facile',
-'Quale motore di ricerca è sviluppato da Google?',
+'Quale motore di ricerca fu ideato da Larry Page e Sergey Brin?',
 'Google Search',
 'Bing',
 'Yahoo',
@@ -3930,11 +3960,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'facile',
-'Quale dispositivo permette di collegare più computer in rete?',
+'Quale dispositivo instrada i pacchetti tra reti informatiche diverse?',
 'Router',
+'Switch',
 'Scanner',
-'Webcam',
-'Microfono'
+'Webcam'
 ),
 
 (
@@ -4020,7 +4050,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'difficile',
-'Quale linguaggio di programmazione fu progettato da Bjarne Stroustrup come evoluzione del linguaggio C?',
+'Quale linguaggio di programmazione fu progettato da Bjarne Stroustrup a partire dal 1979?',
 'C++',
 'Rust',
 'Go',
@@ -4080,9 +4110,9 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'difficile',
-'Quale sistema operativo introdusse per primo il concetto moderno di kernel Linux?',
-'GNU/Linux',
+'Quale sistema operativo didattico ispirò inizialmente Linus Torvalds nello sviluppo del kernel Linux?',
 'MINIX',
+'GNU/Linux',
 'UNIX System V',
 'BSD'
 ),
@@ -4120,7 +4150,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Tecnologia'),
 'difficile',
-'Quale protocollo è progettato specificamente per il trasferimento sicuro di file come estensione di SSH?',
+'Quale protocollo consente di gestire e trasferire file attraverso una sessione SSH con comandi dedicati?',
 'SFTP',
 'FTPS',
 'TFTP',
@@ -4151,7 +4181,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'facile',
-'Chi è il protagonista dei fumetti di Topolino?',
+'Quale personaggio Disney è fidanzato con Minni?',
 'Topolino',
 'Paperino',
 'Pippo',
@@ -4171,11 +4201,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'facile',
-'Chi ha creato il personaggio di Spider-Man?',
-'Stan Lee',
-'Walt Disney',
-'Osamu Tezuka',
-'Hayao Miyazaki'
+'Qual è l''identità civile di Spider-Man nella versione originale più nota dei fumetti Marvel?',
+'Peter Parker',
+'Bruce Wayne',
+'Clark Kent',
+'Matt Murdock'
 ),
 
 (
@@ -4221,11 +4251,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'facile',
-'Quale animale è il protagonista del cartone Tom & Jerry?',
-'Jerry',
-'Tom',
-'Spike',
-'Topolino'
+'Che tipo di animale è Jerry nella serie animata "Tom & Jerry"?',
+'Topo',
+'Gatto',
+'Cane',
+'Coniglio'
 ),
 
 (
@@ -4291,9 +4321,9 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'facile',
-'Quale cartone racconta le avventure di quattro tartarughe ninja?',
+'Quale serie animata ha come protagonisti Leonardo, Raffaello, Donatello e Michelangelo?',
 'Tartarughe Ninja',
-'Pokemon',
+'Pokémon',
 'I Simpson',
 'I Puffi'
 ),
@@ -4461,7 +4491,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'difficile',
-'Quale dei seguenti NON è uno dei sette nani della fiaba di Biancaneve?',
+'Quale dei seguenti NON è uno dei sette nani nel film Disney "Biancaneve e i sette nani"?',
 'Felice',
 'Pisolo',
 'Brontolo',
@@ -4471,11 +4501,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'difficile',
-'Quale studio di animazione ha prodotto il film "La città incantata"?',
-'Studio Ghibli',
-'Toei Animation',
-'Madhouse',
-'Kyoto Animation'
+'Quale regista giapponese ha diretto il film d''animazione "La città incantata"?',
+'Hayao Miyazaki',
+'Isao Takahata',
+'Mamoru Hosoda',
+'Satoshi Kon'
 ),
 
 (
@@ -4501,7 +4531,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'difficile',
-'Quale film Disney fu il primo lungometraggio animato della storia?',
+'Quale film fu il primo lungometraggio animato prodotto da Walt Disney?',
 'Biancaneve e i sette nani',
 'Pinocchio',
 'Fantasia',
@@ -4541,7 +4571,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'difficile',
-'Quale film Pixar vinse l''Oscar come miglior film d''animazione nel 2003?',
+'Quale film Pixar, uscito nel 2003, vinse l''Oscar come miglior film d''animazione nel 2004?',
 'Alla ricerca di Nemo',
 'Monsters & Co.',
 'Gli Incredibili',
@@ -4561,7 +4591,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
 'difficile',
-'Quale principessa Disney è ispirata alla leggenda cinese di Hua Mulan?',
+'Quale principessa Disney si traveste da soldato per prendere il posto del padre nell''esercito?',
 'Mulan',
 'Jasmine',
 'Pocahontas',
@@ -4642,7 +4672,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'facile',
-'In quale gioco bisogna catturare creature chiamate Pokémon?',
+'In quale serie di videogiochi l''allenatore completa un Pokédex catturando diverse creature?',
 'Pokémon',
 'Minecraft',
 'Fortnite',
@@ -4722,7 +4752,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'medio',
-'Quale software house ha creato Grand Theft Auto?',
+'Quale azienda pubblica la serie Grand Theft Auto?',
 'Rockstar Games',
 'Ubisoft',
 'Valve',
@@ -4772,7 +4802,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'medio',
-'Quale azienda ha creato la console Nintendo Switch?',
+'Quale azienda giapponese produce la console Switch?',
 'Nintendo',
 'Sony',
 'Microsoft',
@@ -4782,7 +4812,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'facile',
-'Quale gioco è famoso per il personaggio Pac-Man?',
+'In quale videogioco arcade il giocatore attraversa un labirinto mangiando pallini ed evitando fantasmi?',
 'Pac-Man',
 'Donkey Kong',
 'Frogger',
@@ -4852,11 +4882,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'medio',
-'Quale casa produttrice ha creato la saga Final Fantasy?',
-'Square Enix',
+'Quale società, prima della fusione con Enix, creò la saga Final Fantasy?',
+'Square',
 'Capcom',
 'Konami',
-'Bethesda'
+'Sega'
 ),
 
 (
@@ -5002,7 +5032,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Videogiochi'),
 'difficile',
-'Quale gioco è considerato il primo grande MMORPG commerciale a raggiungere enorme successo mondiale nei primi anni 2000?',
+'Quale MMORPG di Blizzard Entertainment, pubblicato nel 2004, è ambientato nel mondo di Azeroth?',
 'World of Warcraft',
 'EverQuest',
 'Ultima Online',
@@ -5123,7 +5153,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'medio',
-'Quale istituzione europea ha sede a Bruxelles?',
+'Quale istituzione dell''Unione Europea ha la propria sede principale a Bruxelles?',
 'Commissione Europea',
 'NATO',
 'ONU',
@@ -5163,7 +5193,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'medio',
-'Quale città ospita il Parlamento europeo?',
+'In quale città si tengono le sedute plenarie ufficiali del Parlamento europeo?',
 'Strasburgo',
 'Parigi',
 'Berlino',
@@ -5263,7 +5293,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'facile',
-'Quale Paese è famoso per il sistema politico della Casa Bianca?',
+'In quale Paese la Casa Bianca è la residenza ufficiale del capo dello Stato?',
 'Stati Uniti',
 'Francia',
 'Germania',
@@ -5283,7 +5313,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'facile',
-'Come si chiama l''attuale forma istituzionale della Repubblica francese?',
+'Come si chiama la forma istituzionale francese inaugurata dalla Costituzione del 1958?',
 'Quinta Repubblica',
 'Terza Repubblica',
 'Quarta Repubblica',
@@ -5293,11 +5323,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'medio',
-'Quale Stato ha il sistema politico chiamato "Repubblica Federale"?',
+'Quale Paese europeo è una confederazione composta da 26 cantoni?',
+'Svizzera',
 'Germania',
-'Italia',
-'Grecia',
-'Portogallo'
+'Austria',
+'Belgio'
 ),
 
 (
@@ -5323,9 +5353,9 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'facile',
-'Quale potere dello Stato applica le leggi?',
-'Potere giudiziario',
+'Quale potere dello Stato dà esecuzione alle leggi e attua l''indirizzo politico?',
 'Potere esecutivo',
+'Potere giudiziario',
 'Potere economico',
 'Potere militare'
 ),
@@ -5403,7 +5433,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'difficile',
-'Quale organo dell''Unione Europea detiene il monopolio dell''iniziativa legislativa?',
+'Quale istituzione dell''Unione Europea esercita di norma il diritto di iniziativa legislativa?',
 'Commissione Europea',
 'Parlamento Europeo',
 'Consiglio Europeo',
@@ -5433,11 +5463,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Politica'),
 'difficile',
-'In quale anno entrò in vigore la Costituzione della Repubblica Italiana?',
-'1948',
-'1946',
-'1947',
-'1949'
+'Quale organo giudica i conflitti di attribuzione tra i poteri dello Stato italiano?',
+'Corte costituzionale',
+'Corte di cassazione',
+'Consiglio di Stato',
+'Consiglio superiore della magistratura'
 ),
 
 (
@@ -5644,8 +5674,8 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'medio',
-'Quale Paese è entrato nell''Unione Europea nel 2023 insieme alla Croazia?',
-'Nessun altro Paese',
+'Quale Paese ha adottato l''euro ed è entrato nello spazio Schengen il 1º gennaio 2023?',
+'Croazia',
 'Ucraina',
 'Norvegia',
 'Svizzera'
@@ -5684,7 +5714,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'medio',
-'Quale accordo internazionale mira a contrastare il cambiamento climatico?',
+'Quale accordo internazionale sul clima fu adottato nel 2015 durante la COP21?',
 'Accordo di Parigi',
 'Trattato di Roma',
 'Protocollo di Kyoto',
@@ -5724,7 +5754,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'medio',
-'Quale città ospita la sede dell''Unione Europea?',
+'Quale città ospita le sedi principali della Commissione europea e del Consiglio europeo?',
 'Bruxelles',
 'Roma',
 'Londra',
@@ -5764,11 +5794,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'medio',
-'Quale organizzazione coordina gli aiuti umanitari internazionali?',
-'ONU',
-'FIFA',
-'OCSE',
-'Interpol'
+'Quale ufficio delle Nazioni Unite coordina la risposta umanitaria internazionale alle emergenze?',
+'OCHA',
+'UNESCO',
+'UNIDO',
+'UNWTO'
 ),
 
 (
@@ -5804,7 +5834,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'medio',
-'Quale continente ospiterà i Mondiali di calcio 2026?',
+'Quale continente ha ospitato i Mondiali di calcio 2026?',
 'Nord America',
 'Europa',
 'Asia',
@@ -5834,11 +5864,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'difficile',
-'Quale accordo internazionale del 2015 ha come obiettivo principale il contenimento del riscaldamento globale?',
-'Accordo di Parigi',
-'Protocollo di Kyoto',
-'Agenda 2030',
-'Convenzione di Rio'
+'Quale obiettivo di temperatura più ambizioso è indicato nell''Accordo di Parigi rispetto ai livelli preindustriali?',
+'Limitare l''aumento a 1,5 °C',
+'Limitare l''aumento a 3 °C',
+'Azzerare ogni variazione climatica',
+'Ridurre la temperatura globale di 2 °C'
 ),
 
 (
@@ -5884,7 +5914,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'difficile',
-'Quale programma spaziale ha riportato esseri umani sulla Luna dopo il programma Apollo?',
+'Quale programma della NASA è stato avviato con l''obiettivo di riportare esseri umani sulla Luna dopo Apollo?',
 'Artemis',
 'Gemini',
 'Mercury',
@@ -5904,7 +5934,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'difficile',
-'Quale metallo è considerato fondamentale per la produzione delle moderne batterie agli ioni di litio?',
+'Quale metallo alcalino, il più leggero della tavola periodica, è ampiamente usato nelle batterie ricaricabili?',
 'Litio',
 'Nichel',
 'Rame',
@@ -5914,11 +5944,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'difficile',
-'Quale tecnologia utilizza un registro distribuito e immutabile per registrare le transazioni?',
-'Blockchain',
-'Cloud Computing',
-'Virtualizzazione',
-'Edge Computing'
+'Quale tecnica crittografica consente a due parti di concordare una chiave segreta su un canale non sicuro?',
+'Scambio di chiavi Diffie-Hellman',
+'Cifratura di Cesare',
+'Funzione hash MD5',
+'Codifica Base64'
 ),
 
 (
@@ -5954,11 +5984,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Attualità'),
 'difficile',
-'Quale continente produce la maggiore quantità di terre rare estratte a livello mondiale?',
-'Asia',
-'Africa',
-'Europa',
-'Oceania'
+'In quale Paese si trova il grande giacimento di terre rare di Bayan Obo?',
+'Cina',
+'Australia',
+'Canada',
+'Sudafrica'
 ),
 
 (
@@ -6025,7 +6055,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'medio',
-'Quale istituzione emette l''euro?',
+'Quale istituzione definisce la politica monetaria dell''Eurozona?',
 'Banca Centrale Europea',
 'Fondo Monetario Internazionale',
 'Banca Mondiale',
@@ -6115,7 +6145,7 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'facile',
-'Quale istituzione italiana gestisce la politica monetaria insieme alla BCE?',
+'Quale banca centrale italiana partecipa all''Eurosistema insieme alla BCE?',
 'Banca d''Italia',
 'INPS',
 'ISTAT',
@@ -6148,7 +6178,7 @@ VALUES
 'Quale economista ha elaborato la teoria della mano invisibile del mercato?',
 'Adam Smith',
 'Karl Marx',
-'John Keynes',
+'John Maynard Keynes',
 'Milton Friedman'
 ),
 
@@ -6285,11 +6315,11 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'medio',
-'Quale economista è associato alla teoria del capitalismo?',
+'Quale economista descrisse la divisione del lavoro usando il celebre esempio della fabbrica di spilli?',
 'Adam Smith',
-'Charles Darwin',
-'Albert Einstein',
-'Sigmund Freud'
+'David Ricardo',
+'Karl Marx',
+'John Maynard Keynes'
 ),
 
 (
@@ -6315,9 +6345,9 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'difficile',
-'Quale indice rappresenta l''andamento delle 500 principali società quotate negli Stati Uniti?',
+'Quale indice è comunemente chiamato "indice della paura" perché misura la volatilità attesa del mercato azionario statunitense?',
+'VIX',
 'S&P 500',
-'Dow Jones Transportation Average',
 'Nasdaq Composite',
 'Russell 2000'
 ),
@@ -6335,27 +6365,27 @@ VALUES
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'difficile',
-'Quale banca centrale è responsabile della politica monetaria dell''Eurozona?',
-'Banca Centrale Europea',
-'Bundesbank',
-'Banca d''Italia',
-'Banca Europea per gli Investimenti'
+'Qual è l''obiettivo primario dell''Eurosistema secondo i trattati dell''Unione Europea?',
+'Mantenere la stabilità dei prezzi',
+'Finanziare direttamente i bilanci pubblici',
+'Fissare le aliquote fiscali nazionali',
+'Garantire la piena occupazione a qualsiasi livello di inflazione'
 ),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'difficile',
-'Quale indicatore misura il valore complessivo dei beni e servizi prodotti all''interno di un Paese in un determinato periodo?',
-'Prodotto Interno Lordo',
-'Reddito Nazionale Lordo',
-'Indice dei Prezzi al Consumo',
-'Deflatore del PIL'
+'Quale indicatore confronta il PIL nominale con il PIL reale per misurare il livello dei prezzi della produzione interna?',
+'Deflatore del PIL',
+'Indice di Gini',
+'Tasso di disoccupazione',
+'Saldo commerciale'
 ),
 
 (
 (SELECT id FROM categorie WHERE nome = 'Economia'),
 'difficile',
-'Quale teoria economica sostiene che la domanda aggregata sia il principale motore della crescita economica?',
+'Quale teoria economica attribuisce alla domanda aggregata un ruolo centrale nel determinare produzione e occupazione nel breve periodo?',
 'Keynesismo',
 'Mercantilismo',
 'Monetarismo',
