@@ -477,6 +477,306 @@ VALUES
 'Blocco di Berlino',
 'Guerra di Corea',
 'Crisi di Suez'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale sovrano francese era soprannominato Re Sole?',
+'Luigi XIV',
+'Luigi XVI',
+'Francesco I',
+'Enrico IV'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale popolo dell''antichità utilizzava la scrittura cuneiforme in Mesopotamia?',
+'Sumeri',
+'Etruschi',
+'Fenici',
+'Celti'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale regina d''Egitto fu alleata di Marco Antonio?',
+'Cleopatra VII',
+'Nefertiti',
+'Hatshepsut',
+'Nefertari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale invenzione di Gutenberg favorì la diffusione dei libri in Europa nel Quattrocento?',
+'La stampa a caratteri mobili metallici',
+'La macchina da scrivere',
+'La litografia',
+'La stampa offset'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale città giapponese fu colpita dalla prima bomba atomica usata in guerra?',
+'Hiroshima',
+'Nagasaki',
+'Osaka',
+'Kyoto'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale esploratore veneziano raccontò i suoi viaggi in Asia nel Milione?',
+'Marco Polo',
+'Amerigo Vespucci',
+'Giovanni Caboto',
+'Vasco da Gama'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale sovrano fu sconfitto definitivamente a Waterloo?',
+'Napoleone Bonaparte',
+'Federico II di Prussia',
+'Luigi XIV',
+'Carlo V'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'In quale paese ebbe inizio la Rivoluzione industriale del Settecento?',
+'Gran Bretagna',
+'Spagna',
+'Russia',
+'Italia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale movimento religioso ebbe tra i suoi protagonisti Martin Lutero?',
+'Riforma protestante',
+'Monachesimo benedettino',
+'Movimento francescano',
+'Controriforma cattolica'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'facile',
+'Quale antica popolazione abitava soprattutto l''Etruria prima dell''espansione di Roma?',
+'Etruschi',
+'Sanniti',
+'Liguri',
+'Veneti'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale trattato del 1919 impose le condizioni di pace alla Germania dopo la Prima guerra mondiale?',
+'Trattato di Versailles',
+'Trattato di Brest-Litovsk',
+'Trattato di Losanna',
+'Trattato di Rapallo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale sovrana inglese regnava durante la sconfitta dell''Invincibile Armata nel 1588?',
+'Elisabetta I',
+'Maria I Tudor',
+'Anna Stuart',
+'Vittoria'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Chi guidò la rivoluzione haitiana prima di essere catturato dai francesi nel 1802?',
+'Toussaint Louverture',
+'Simón Bolívar',
+'José de San Martín',
+'Miguel Hidalgo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale imperatore estese nel 212 la cittadinanza romana a quasi tutti gli abitanti liberi dell''impero?',
+'Caracalla',
+'Diocleziano',
+'Adriano',
+'Claudio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale paese fu invaso dalla Germania il 1º settembre 1939?',
+'Polonia',
+'Danimarca',
+'Belgio',
+'Norvegia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale città ospitò il congresso che ridisegnò l''Europa dopo le guerre napoleoniche?',
+'Vienna',
+'Berlino',
+'Parigi',
+'Praga'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale dinastia russa salì al trono nel 1613?',
+'Romanov',
+'Rjurikidi',
+'Jagelloni',
+'Vasa'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale battaglia del 1066 consentì a Guglielmo di Normandia di conquistare il trono inglese?',
+'Hastings',
+'Azincourt',
+'Bannockburn',
+'Bosworth'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale rivoluzione portò alla caduta dello zar nel 1917, prima della presa del potere bolscevica?',
+'Rivoluzione di febbraio',
+'Rivoluzione d''ottobre',
+'Rivoluzione del 1905',
+'Rivoluzione di luglio del 1830'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'medio',
+'Quale paese africano sconfisse l''esercito italiano ad Adua nel 1896?',
+'Etiopia',
+'Egitto',
+'Sudan',
+'Libia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale accordo del 1122 regolò la lotta per le investiture tra papato e impero?',
+'Concordato di Worms',
+'Concordato di Bologna',
+'Pace di Augusta',
+'Trattato di Verdun'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale sovrano persiano fu sconfitto da Alessandro Magno a Gaugamela?',
+'Dario III',
+'Serse I',
+'Ciro II',
+'Artaserse I'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale trattato del 1494 divise le nuove aree di espansione oltremare tra Spagna e Portogallo?',
+'Trattato di Tordesillas',
+'Trattato di Alcáçovas',
+'Trattato di Saragozza',
+'Trattato di Cateau-Cambrésis'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale dinastia cinese governò immediatamente prima dei Ming?',
+'Yuan',
+'Tang',
+'Qing',
+'Han'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale regno africano ebbe come sovrano Mansa Musa nel XIV secolo?',
+'Impero del Mali',
+'Regno di Aksum',
+'Impero del Ghana',
+'Regno del Kongo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale editto del 1685 revocò quello di Nantes, limitando il culto protestante in Francia?',
+'Editto di Fontainebleau',
+'Editto di Milano',
+'Editto di Saint-Germain del 1562',
+'Editto di Beaulieu'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale battaglia navale del 1571 vide la Lega Santa sconfiggere la flotta ottomana?',
+'Lepanto',
+'Prevesa',
+'Navarino',
+'Abukir'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale imperatore romano fu catturato dal sovrano sasanide Sapore I nel 260?',
+'Valeriano',
+'Aureliano',
+'Decio',
+'Gallieno'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale documento del 1356 disciplinò l''elezione dell''imperatore del Sacro Romano Impero?',
+'Bolla d''oro',
+'Constitutio de feudis',
+'Dictatus papae',
+'Prammatica Sanzione del 1713'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Storia'),
+'difficile',
+'Quale conferenza del 1955 riunì in Indonesia rappresentanti di paesi asiatici e africani?',
+'Conferenza di Bandung',
+'Conferenza di Bretton Woods',
+'Conferenza di Teheran',
+'Conferenza di San Francisco'
 );
 
 INSERT INTO domande (
@@ -938,6 +1238,306 @@ VALUES
 'René Magritte',
 'Joan Miró',
 'Max Ernst'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale pittrice messicana è nota per i suoi numerosi autoritratti e per il dipinto Le due Frida?',
+'Frida Kahlo',
+'Tamara de Lempicka',
+'Georgia O''Keeffe',
+'Berthe Morisot'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale tecnica crea un''immagine accostando piccole tessere di pietra o vetro?',
+'Mosaico',
+'Acquaforte',
+'Acquerello',
+'Carboncino'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale pittore norvegese realizzò L''urlo?',
+'Edvard Munch',
+'Gustav Klimt',
+'Egon Schiele',
+'Paul Klee'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale elemento architettonico a punta è tipico delle cattedrali gotiche?',
+'Arco a sesto acuto',
+'Arco a tutto sesto',
+'Architrave orizzontale',
+'Cupola emisferica'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'In quale città spagnola si trova il Museo del Prado?',
+'Madrid',
+'Barcellona',
+'Siviglia',
+'Bilbao'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale artista dipinse Il bacio con ampie decorazioni dorate?',
+'Gustav Klimt',
+'Edvard Munch',
+'Henri Rousseau',
+'Amedeo Modigliani'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Come si chiama un dipinto che raffigura soprattutto oggetti inanimati, come vasi e frutti?',
+'Natura morta',
+'Ritratto',
+'Paesaggio',
+'Pittura di storia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale strumento sostiene la tela mentre il pittore lavora?',
+'Cavalletto',
+'Torchio',
+'Bulino',
+'Compasso'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale scultura antica raffigura un atleta nell''atto di lanciare un disco?',
+'Discobolo',
+'Laocoonte',
+'Doriforo',
+'Galata morente'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'facile',
+'Quale artista è celebre per sculture mobili sospese che si muovono con l''aria?',
+'Alexander Calder',
+'Auguste Rodin',
+'Henry Moore',
+'Alberto Giacometti'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale pittore dipinse Una domenica pomeriggio all''isola della Grande Jatte?',
+'Georges Seurat',
+'Paul Gauguin',
+'Camille Pissarro',
+'Alfred Sisley'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale architetto progettò il Guggenheim Museum di Bilbao?',
+'Frank Gehry',
+'Renzo Piano',
+'Norman Foster',
+'Santiago Calatrava'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale artista realizzò il ready-made Fountain, un orinatoio presentato come opera d''arte?',
+'Marcel Duchamp',
+'Man Ray',
+'Max Ernst',
+'Jean Arp'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale movimento artistico comprende le opere di Ernst Ludwig Kirchner e del gruppo Die Brücke?',
+'Espressionismo',
+'Realismo',
+'Neoclassicismo',
+'Divisionismo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale pittrice seicentesca realizzò una celebre Giuditta che decapita Oloferne conservata agli Uffizi?',
+'Artemisia Gentileschi',
+'Sofonisba Anguissola',
+'Lavinia Fontana',
+'Elisabetta Sirani'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale pittore è noto per le sue vedute di Venezia e si chiamava Giovanni Antonio Canal?',
+'Canaletto',
+'Guardi',
+'Tiepolo',
+'Longhi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'In quale città si trova il complesso del Bauhaus progettato da Walter Gropius nel 1925-1926?',
+'Dessau',
+'Monaco di Baviera',
+'Colonia',
+'Amburgo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale tecnica di incisione utilizza un acido per scavare i segni su una lastra metallica?',
+'Acquaforte',
+'Xilografia',
+'Linoleografia',
+'Puntasecca'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale pittore francese rappresentò spesso ballerine e prove di danza?',
+'Edgar Degas',
+'Gustave Courbet',
+'Jean-François Millet',
+'Eugène Delacroix'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'medio',
+'Quale scultore realizzò Forme uniche della continuità nello spazio?',
+'Umberto Boccioni',
+'Giacomo Manzù',
+'Medardo Rosso',
+'Marino Marini'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale artista progettò la spirale di pietre Spiral Jetty nel Great Salt Lake?',
+'Robert Smithson',
+'Richard Serra',
+'Donald Judd',
+'Dan Flavin'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale architetto barocco progettò la chiesa romana di San Carlo alle Quattro Fontane?',
+'Francesco Borromini',
+'Carlo Maderno',
+'Baldassarre Longhena',
+'Filippo Juvarra'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale pittore realizzò Il quarto stato, conservato a Milano?',
+'Giuseppe Pellizza da Volpedo',
+'Giovanni Segantini',
+'Gaetano Previati',
+'Angelo Morbelli'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale artista giapponese realizzò la xilografia La grande onda presso Kanagawa?',
+'Katsushika Hokusai',
+'Utagawa Hiroshige',
+'Kitagawa Utamaro',
+'Tōshūsai Sharaku'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale teorico rinascimentale scrisse il trattato De pictura nel 1435?',
+'Leon Battista Alberti',
+'Giorgio Vasari',
+'Andrea Palladio',
+'Sebastiano Serlio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale pittore è autore della Flagellazione di Cristo conservata a Urbino?',
+'Piero della Francesca',
+'Paolo Uccello',
+'Andrea Mantegna',
+'Domenico Ghirlandaio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale fotografo realizzò nel 1936 l''immagine nota come Migrant Mother?',
+'Dorothea Lange',
+'Walker Evans',
+'Margaret Bourke-White',
+'Diane Arbus'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale gruppo artistico fu fondato a Monaco nel 1911 da Kandinskij e Franz Marc?',
+'Der Blaue Reiter',
+'Die Neue Sachlichkeit',
+'De Stijl',
+'Les Nabis'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale artista brasiliana dipinse Abaporu nel 1928?',
+'Tarsila do Amaral',
+'Lygia Clark',
+'Anita Malfatti',
+'Lygia Pape'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Arte'),
+'difficile',
+'Quale scultore realizzò le porte bronzee del Battistero di Firenze note come Porta del Paradiso?',
+'Lorenzo Ghiberti',
+'Donatello',
+'Andrea del Verrocchio',
+'Luca della Robbia'
 );
 
 INSERT INTO domande (
@@ -1399,6 +1999,306 @@ VALUES
 'Città del Capo',
 'Bloemfontein',
 'Johannesburg'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale fiume attraversa Budapest?',
+'Danubio',
+'Reno',
+'Senna',
+'Elba'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale paese sudamericano ha una forma lunga e stretta lungo il Pacifico?',
+'Cile',
+'Uruguay',
+'Paraguay',
+'Ecuador'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale catena montuosa separa la penisola iberica dal resto dell''Europa?',
+'Pirenei',
+'Carpazi',
+'Appennini',
+'Balcani'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'In quale paese si trova la città di Marrakech?',
+'Marocco',
+'Tunisia',
+'Algeria',
+'Egitto'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale mare si trova tra Italia meridionale e Grecia occidentale?',
+'Mar Ionio',
+'Mar Tirreno',
+'Mar Nero',
+'Mar di Marmara'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale città è la capitale dell''Irlanda?',
+'Dublino',
+'Belfast',
+'Cardiff',
+'Edimburgo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale grande isola si trova al largo della costa sudorientale dell''Africa?',
+'Madagascar',
+'Sri Lanka',
+'Sumatra',
+'Cuba'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale paese scandinavo ha Oslo come capitale?',
+'Norvegia',
+'Svezia',
+'Danimarca',
+'Islanda'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'In quale oceano si trova l''arcipelago delle Hawaii?',
+'Oceano Pacifico',
+'Oceano Atlantico',
+'Oceano Indiano',
+'Oceano Artico'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'facile',
+'Quale regione italiana ha Perugia come capoluogo?',
+'Umbria',
+'Marche',
+'Abruzzo',
+'Molise'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale stretto separa l''Asia dall''America settentrionale?',
+'Stretto di Bering',
+'Stretto di Malacca',
+'Stretto di Hormuz',
+'Stretto di Magellano'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale paese ospita la città storica di Petra?',
+'Giordania',
+'Libano',
+'Oman',
+'Siria'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale lago sudamericano è condiviso da Perù e Bolivia?',
+'Titicaca',
+'Maracaibo',
+'Nicaragua',
+'Lago Argentino'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale capitale europea sorge sul fiume Moldava?',
+'Praga',
+'Varsavia',
+'Bratislava',
+'Lubiana'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale paese è interamente circondato dal Sudafrica?',
+'Lesotho',
+'Eswatini',
+'Botswana',
+'Namibia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale deserto si estende lungo la costa del Cile settentrionale?',
+'Atacama',
+'Namib',
+'Gobi',
+'Sonora'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale fiume attraversa Baghdad?',
+'Tigri',
+'Eufrate',
+'Giordano',
+'Oronte'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale arcipelago spagnolo comprende Tenerife e Lanzarote?',
+'Canarie',
+'Baleari',
+'Azzorre',
+'Madeira'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale stato degli USA ospita il Grand Canyon?',
+'Arizona',
+'Utah',
+'Colorado',
+'Nevada'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'medio',
+'Quale paese dell''Asia sudorientale non ha sbocchi sul mare?',
+'Laos',
+'Cambogia',
+'Myanmar',
+'Vietnam'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale stretto collega il Mar Nero al Mar di Marmara?',
+'Bosforo',
+'Dardanelli',
+'Kerč',
+'Otranto'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale capitale nazionale è situata sull''isola di Upolu?',
+'Apia',
+'Suva',
+'Nuku''alofa',
+'Port Vila'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale fiume sfocia nell''Atlantico presso Saint-Louis, sulla costa dell''Africa occidentale?',
+'Senegal',
+'Niger',
+'Gambia',
+'Volta'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale territorio continentale sudamericano confina sia con il Suriname sia con il Brasile?',
+'Guyana francese',
+'Guyana',
+'Uruguay',
+'Ecuador'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale catena montuosa culmina nel Toubkal?',
+'Atlante',
+'Ruwenzori',
+'Drakensberg',
+'Hoggar'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale isola dell''Indonesia ospita la città di Makassar?',
+'Sulawesi',
+'Giava',
+'Bali',
+'Lombok'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale lago asiatico è il più profondo del mondo?',
+'Bajkal',
+'Balqaš',
+'Issyk-Kul',
+'Lago d''Aral'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale paese possiede l''exclave di Cabinda?',
+'Angola',
+'Gabon',
+'Camerun',
+'Mozambico'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale fiume europeo sfocia nel Mare del Nord presso Rotterdam dopo essersi ramificato nel suo delta?',
+'Reno',
+'Elba',
+'Weser',
+'Oder'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Geografia'),
+'difficile',
+'Quale isola canadese è separata dalla Groenlandia dallo stretto di Nares?',
+'Ellesmere',
+'Baffin',
+'Victoria',
+'Banks'
 );
 
 INSERT INTO domande (
@@ -1860,6 +2760,306 @@ VALUES
 'Max Planck',
 'Ernest Rutherford',
 'Paul Dirac'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale passaggio di stato trasforma un liquido in un solido?',
+'Solidificazione',
+'Sublimazione',
+'Condensazione',
+'Vaporizzazione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale strumento misura la pressione atmosferica?',
+'Barometro',
+'Anemometro',
+'Igrometro',
+'Pluviometro'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale metallo è liquido a circa 20 °C e alla pressione atmosferica?',
+'Mercurio',
+'Alluminio',
+'Rame',
+'Stagno'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale gruppo di vertebrati comprende rane e salamandre?',
+'Anfibi',
+'Rettili',
+'Pesci',
+'Mammiferi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale parte del fiore produce il polline?',
+'Antera',
+'Stigma',
+'Ovario',
+'Sepalo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Come si chiama il percorso compiuto da un pianeta attorno a una stella?',
+'Orbita',
+'Asse',
+'Diametro',
+'Meridiano'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale materiale è normalmente un buon conduttore elettrico?',
+'Rame',
+'Gomma',
+'Vetro',
+'Porcellana'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale fenomeno fa apparire piegata una cannuccia immersa nell''acqua?',
+'Rifrazione',
+'Diffrazione',
+'Interferenza',
+'Polarizzazione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale animale appartiene agli aracnidi?',
+'Scorpione',
+'Formica',
+'Millepiedi',
+'Granchio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'facile',
+'Quale grandezza si misura in hertz?',
+'Frequenza',
+'Energia',
+'Potenza',
+'Pressione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale base azotata è presente nell''RNA al posto della timina?',
+'Uracile',
+'Adenina',
+'Guanina',
+'Citosina'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale legge lega tensione, corrente e resistenza in un conduttore ohmico?',
+'Legge di Ohm',
+'Legge di Hooke',
+'Legge di Coulomb',
+'Legge di Boyle'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale roccia deriva dalla trasformazione metamorfica del calcare?',
+'Marmo',
+'Basalto',
+'Granito',
+'Arenaria'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale struttura della cellula vegetale contiene clorofilla?',
+'Cloroplasto',
+'Lisosoma',
+'Ribosoma',
+'Centriolo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Che cosa rappresenta il numero atomico di un elemento?',
+'Il numero di protoni nel nucleo',
+'Il numero di neutroni nel nucleo',
+'La somma di protoni e neutroni',
+'Il numero di legami possibili'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale processo porta alla formazione di gameti con metà dei cromosomi nelle specie diploidi?',
+'Meiosi',
+'Mitosi',
+'Scissione binaria',
+'Gemmazione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale tipo di onda è il suono che si propaga nell''aria?',
+'Meccanica longitudinale',
+'Elettromagnetica trasversale',
+'Elettromagnetica longitudinale',
+'Meccanica esclusivamente trasversale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale gas nobile viene comunemente usato per gonfiare palloncini che salgono nell''aria?',
+'Elio',
+'Argon',
+'Neon',
+'Xenon'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale pianeta ha un asse di rotazione inclinato di circa 98 gradi, tanto da sembrare coricato?',
+'Urano',
+'Nettuno',
+'Giove',
+'Venere'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'medio',
+'Quale grandezza fisica si conserva in un sistema isolato durante un urto, anche anelastico?',
+'Quantità di moto totale',
+'Energia cinetica totale',
+'Velocità di ogni corpo',
+'Temperatura di ogni corpo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale principio afferma che due fermioni identici non possono occupare lo stesso stato quantico?',
+'Principio di esclusione di Pauli',
+'Principio di Huygens',
+'Principio di Fermat',
+'Principio di equivalenza'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale ciclo metabolico fissa il carbonio durante la fotosintesi?',
+'Ciclo di Calvin',
+'Ciclo di Krebs',
+'Ciclo dell''urea',
+'Ciclo di Cori'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale minerale occupa il grado 8 nella scala di Mohs?',
+'Topazio',
+'Quarzo',
+'Corindone',
+'Apatite'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale legge descrive lo spostamento del massimo di emissione di un corpo nero al variare della temperatura?',
+'Legge di Wien',
+'Legge di Pascal',
+'Legge di Fick',
+'Legge di Faraday'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale numero quantico descrive l''orientamento spaziale di un orbitale atomico?',
+'Numero quantico magnetico',
+'Numero quantico principale',
+'Numero quantico di spin',
+'Numero quantico azimutale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale enzima unisce frammenti adiacenti di DNA formando legami fosfodiesterici?',
+'DNA ligasi',
+'Elicasi',
+'Primasi',
+'Topoisomerasi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale discontinuità separa la crosta terrestre dal mantello?',
+'Discontinuità di Mohorovičić',
+'Discontinuità di Gutenberg',
+'Discontinuità di Lehmann',
+'Limite di Roche'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale particella mediatrice dell''interazione debole può avere carica elettrica positiva?',
+'Bosone W⁺',
+'Bosone Z⁰',
+'Fotone',
+'Gluone'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale fenomeno quantistico permette di attraversare una barriera energetica classicamente insuperabile?',
+'Effetto tunnel',
+'Effetto Doppler',
+'Effetto Joule',
+'Effetto Coriolis'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Scienze'),
+'difficile',
+'Quale gruppo di organismi comprende i metanogeni, capaci di produrre metano nel proprio metabolismo?',
+'Archei',
+'Funghi',
+'Piante',
+'Animali'
 );
 
 INSERT INTO domande (
@@ -2321,6 +3521,306 @@ VALUES
 'Joe Frazier',
 'Larry Holmes',
 'George Foreman'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'In quale disciplina si gareggia con fioretto, spada e sciabola?',
+'Scherma',
+'Pentathlon dei lanci',
+'Tiro con l''arco',
+'Kendo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale competizione ciclistica assegna al leader della classifica generale la maglia rosa?',
+'Giro d''Italia',
+'Vuelta a España',
+'Giro di Svizzera',
+'Parigi-Nizza'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale attrezzo viene passato tra compagni nelle staffette di atletica?',
+'Testimone',
+'Disco',
+'Giavellotto',
+'Martello'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale stile di nuoto prevede che l''atleta proceda con il viso rivolto verso l''alto?',
+'Dorso',
+'Rana',
+'Farfalla',
+'Crawl'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale sport utilizza un volano al posto della palla?',
+'Badminton',
+'Squash',
+'Padel',
+'Tennis tavolo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quanti chilometri misura ufficialmente una maratona?',
+'42,195',
+'40',
+'41,195',
+'45'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale nazione rappresentava Federica Pellegrini nelle competizioni internazionali?',
+'Italia',
+'Francia',
+'Svizzera',
+'Spagna'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'In quale disciplina si eseguono esercizi agli anelli?',
+'Ginnastica artistica',
+'Ginnastica ritmica',
+'Trampolino elastico',
+'Tuffi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale sport combina sci di fondo e tiro con la carabina?',
+'Biathlon',
+'Combinata nordica',
+'Sci alpinismo',
+'Pentathlon moderno'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'facile',
+'Quale superficie caratterizza tradizionalmente gli incontri di Wimbledon?',
+'Erba',
+'Terra rossa',
+'Cemento',
+'Parquet'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale atleta vinse quattro ori nell''atletica ai Giochi di Berlino del 1936?',
+'Jesse Owens',
+'Carl Lewis',
+'Paavo Nurmi',
+'Emil Zátopek'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale squadra vinse il campionato NBA del 1996 con Michael Jordan?',
+'Chicago Bulls',
+'Los Angeles Lakers',
+'Detroit Pistons',
+'Houston Rockets'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale pilota conquistò il Mondiale di Formula 1 del 2007?',
+'Kimi Räikkönen',
+'Fernando Alonso',
+'Felipe Massa',
+'Lewis Hamilton'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale nazionale vinse il primo Mondiale maschile di calcio nel 1930?',
+'Uruguay',
+'Argentina',
+'Italia',
+'Brasile'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale tennista italiana vinse il singolare femminile del Roland Garros nel 2010?',
+'Francesca Schiavone',
+'Flavia Pennetta',
+'Sara Errani',
+'Roberta Vinci'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quante discipline compongono il decathlon di atletica leggera?',
+'Dieci',
+'Sette',
+'Otto',
+'Dodici'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Nel golf, come si chiama una buca completata con un colpo in meno del par?',
+'Birdie',
+'Bogey',
+'Eagle',
+'Albatross'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale città ospitò i Giochi olimpici estivi del 1992?',
+'Barcellona',
+'Atlanta',
+'Seul',
+'Sydney'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Quale paese vinse la Coppa del Mondo maschile di rugby nel 1995?',
+'Sudafrica',
+'Nuova Zelanda',
+'Australia',
+'Inghilterra'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'medio',
+'Nel tennis, quale termine indica un servizio valido che l''avversario non riesce a toccare?',
+'Ace',
+'Let',
+'Break',
+'Smash'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale atleta vinse i 5000 metri, i 10000 metri e la maratona ai Giochi del 1952?',
+'Emil Zátopek',
+'Lasse Virén',
+'Abebe Bikila',
+'Alain Mimoun'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale squadra di Formula 1 conquistò entrambi i titoli mondiali nel 2009?',
+'Brawn GP',
+'Red Bull Racing',
+'McLaren',
+'Ferrari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale atleta stabilì a Città del Messico 1968 il record mondiale del salto in lungo con 8,90 metri?',
+'Bob Beamon',
+'Mike Powell',
+'Ralph Boston',
+'Carl Lewis'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale ciclista vinse il Tour de France del 1998?',
+'Marco Pantani',
+'Jan Ullrich',
+'Bjarne Riis',
+'Miguel Indurain'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale paese vinse il torneo olimpico maschile di pallacanestro ad Atene 2004?',
+'Argentina',
+'Stati Uniti',
+'Italia',
+'Spagna'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale nuotatrice vinse cinque ori e un argento ai campionati mondiali di Berlino del 1978?',
+'Tracy Caulkins',
+'Shirley Babashoff',
+'Kornelia Ender',
+'Janet Evans'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale tennista vinse il singolare maschile di Wimbledon nel 2001 entrando con una wild card?',
+'Goran Ivanišević',
+'Pat Rafter',
+'Lleyton Hewitt',
+'Richard Krajicek'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale scacchista sconfisse Boris Spasskij nel match mondiale di Reykjavík del 1972?',
+'Bobby Fischer',
+'Anatolij Karpov',
+'Garri Kasparov',
+'Michail Tal'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale nazione vinse la prima Coppa del Mondo femminile di calcio nel 1991?',
+'Stati Uniti',
+'Norvegia',
+'Germania',
+'Cina'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Sport'),
+'difficile',
+'Quale atleta italiana vinse l''oro olimpico nel salto in alto a Mosca 1980?',
+'Sara Simeoni',
+'Antonella Bevilacqua',
+'Alessia Trost',
+'Antonietta Di Martino'
 );
 
 INSERT INTO domande (
@@ -2782,6 +4282,306 @@ VALUES
 'Federico Fellini',
 'Michelangelo Antonioni',
 'Giuseppe Tornatore'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale attore interpreta Forrest Gump nel film del 1994?',
+'Tom Hanks',
+'Robin Williams',
+'Kevin Costner',
+'Harrison Ford'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'In quale saga Marty McFly viaggia nel tempo a bordo di una DeLorean?',
+'Ritorno al futuro',
+'Men in Black',
+'Ghostbusters',
+'Jurassic Park'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale regista diresse Jurassic Park nel 1993?',
+'Steven Spielberg',
+'George Lucas',
+'Robert Zemeckis',
+'James Cameron'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale film Disney del 1964 ha come protagonista una tata che vola con un ombrello?',
+'Mary Poppins',
+'Pomi d''ottone e manici di scopa',
+'Il maggiolino tutto matto',
+'Pollyanna'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale attrice interpreta il ruolo principale in Pretty Woman?',
+'Julia Roberts',
+'Sandra Bullock',
+'Meg Ryan',
+'Michelle Pfeiffer'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale premio principale viene assegnato alla Mostra del cinema di Venezia?',
+'Leone d''oro',
+'Palma d''oro',
+'Orso d''oro',
+'Concha d''oro'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale film del 1975 racconta gli attacchi di un grande predatore marino presso l''isola di Amity?',
+'Lo squalo',
+'Orca - L''orca assassina',
+'Abissi',
+'Blu profondo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale attore interpretò il personaggio di Fantozzi al cinema?',
+'Paolo Villaggio',
+'Alberto Sordi',
+'Nino Manfredi',
+'Ugo Tognazzi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale film del 1982 ha per protagonista il cacciatore di replicanti Rick Deckard?',
+'Blade Runner',
+'Tron',
+'Alien',
+'Dune'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'facile',
+'Quale attrice interpreta Katniss Everdeen nei film di Hunger Games?',
+'Jennifer Lawrence',
+'Emma Stone',
+'Shailene Woodley',
+'Kristen Stewart'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale regista diresse Psycho nel 1960?',
+'Alfred Hitchcock',
+'Orson Welles',
+'Billy Wilder',
+'John Ford'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale film italiano del 1988 ha come protagonista un ragazzo soprannominato Totò e un proiezionista di nome Alfredo?',
+'Nuovo Cinema Paradiso',
+'Mediterraneo',
+'Il postino',
+'Pane e tulipani'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale regista diresse Amélie, uscito nel 2001?',
+'Jean-Pierre Jeunet',
+'Luc Besson',
+'François Ozon',
+'Michel Gondry'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'In quale film Charlize Theron interpreta Imperator Furiosa?',
+'Mad Max: Fury Road',
+'Atomic Blonde',
+'The Old Guard',
+'Prometheus'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale regista diresse il western Il buono, il brutto, il cattivo?',
+'Sergio Leone',
+'Sergio Corbucci',
+'Sam Peckinpah',
+'John Sturges'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale attore interpreta Truman Burbank in The Truman Show?',
+'Jim Carrey',
+'Ben Stiller',
+'Adam Sandler',
+'Steve Carell'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale film di Charlie Chaplin critica la catena di montaggio e l''alienazione industriale?',
+'Tempi moderni',
+'Luci della città',
+'La febbre dell''oro',
+'Il monello'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale regista diresse il film La finestra di fronte del 2003?',
+'Ferzan Özpetek',
+'Nanni Moretti',
+'Paolo Sorrentino',
+'Gabriele Salvatores'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale attrice interpreta Mia Wallace in Pulp Fiction?',
+'Uma Thurman',
+'Rosanna Arquette',
+'Patricia Arquette',
+'Bridget Fonda'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'medio',
+'Quale film del 2016 racconta l''incontro della linguista Louise Banks con visitatori extraterrestri?',
+'Arrival',
+'Interstellar',
+'Gravity',
+'Ad Astra'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale direttrice della fotografia divenne nel 2018 la prima donna candidata all''Oscar per la fotografia, grazie a Mudbound?',
+'Rachel Morrison',
+'Ellen Kuras',
+'Mandy Walker',
+'Reed Morano'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale regista realizzò Tokyo Story, noto in Italia come Viaggio a Tokyo, nel 1953?',
+'Yasujirō Ozu',
+'Kenji Mizoguchi',
+'Akira Kurosawa',
+'Mikio Naruse'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale film di Agnès Varda segue una cantante per due ore, in attesa di un referto medico?',
+'Cléo dalle 5 alle 7',
+'Senza tetto né legge',
+'Il verde prato dell''amore',
+'Una canta, l''altra no'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale direttore della fotografia collaborò con Vittorio De Sica a Ladri di biciclette?',
+'Carlo Montuori',
+'Gianni Di Venanzo',
+'Aldo Tonti',
+'Otello Martelli'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale film di Fritz Lang del 1927 presenta una città futuristica divisa tra operai e dirigenti?',
+'Metropolis',
+'M - Il mostro di Düsseldorf',
+'La donna sulla Luna',
+'Il dottor Mabuse'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale regista senegalese realizzò La Noire de... nel 1966?',
+'Ousmane Sembène',
+'Djibril Diop Mambéty',
+'Souleymane Cissé',
+'Abderrahmane Sissako'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale montatrice lavorò con Martin Scorsese a Toro scatenato?',
+'Thelma Schoonmaker',
+'Dede Allen',
+'Anne V. Coates',
+'Verna Fields'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale film del 1943 segnò l''esordio di Luchino Visconti nella regia di un lungometraggio?',
+'Ossessione',
+'La terra trema',
+'Bellissima',
+'Senso'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale regista iraniano vinse la Palma d''oro nel 1997 con Il sapore della ciliegia?',
+'Abbas Kiarostami',
+'Jafar Panahi',
+'Mohsen Makhmalbaf',
+'Asghar Farhadi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Cinema'),
+'difficile',
+'Quale compositore scrisse la musica di Vertigo, distribuito in Italia come La donna che visse due volte?',
+'Bernard Herrmann',
+'Max Steiner',
+'Miklós Rózsa',
+'Dimitri Tiomkin'
 );
 
 INSERT INTO domande (
@@ -3243,6 +5043,306 @@ VALUES
 'Igor Stravinskij',
 'Claude Debussy',
 'Béla Bartók'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale band irlandese ha Bono come cantante?',
+'U2',
+'Oasis',
+'Coldplay',
+'Radiohead'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale famiglia di strumenti comprende clarinetto e oboe?',
+'Legni',
+'Ottoni',
+'Archi',
+'Percussioni'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale cantante ha pubblicato l''album Born in the U.S.A.?',
+'Bruce Springsteen',
+'Billy Joel',
+'Bryan Adams',
+'Sting'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Come si chiama l''esecuzione vocale senza accompagnamento strumentale?',
+'A cappella',
+'In playback',
+'In falsetto',
+'In crescendo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale gruppo svedese ha inciso Dancing Queen?',
+'ABBA',
+'Roxette',
+'Ace of Base',
+'Europe'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale segno musicale alza una nota di un semitono?',
+'Diesis',
+'Bemolle',
+'Bequadro',
+'Corona'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale cantautore italiano ha pubblicato l''album La voce del padrone?',
+'Franco Battiato',
+'Lucio Dalla',
+'Francesco De Gregori',
+'Paolo Conte'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale strumento si suona comprimendo un mantice e azionando tasti o bottoni?',
+'Fisarmonica',
+'Clavicembalo',
+'Marimba',
+'Mandolino'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Quale cantante ha interpretato Like a Virgin nel 1984?',
+'Madonna',
+'Cyndi Lauper',
+'Whitney Houston',
+'Tina Turner'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'facile',
+'Come si chiama il gruppo delle cinque linee su cui si scrivono le note?',
+'Pentagramma',
+'Battuta',
+'Accordo',
+'Intervallo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale band pubblicò Nevermind nel 1991?',
+'Nirvana',
+'Pearl Jam',
+'Soundgarden',
+'Alice in Chains'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale compositore scrisse il balletto Il lago dei cigni?',
+'Pëtr Il''ič Čajkovskij',
+'Sergej Prokof''ev',
+'Aleksandr Borodin',
+'Nikolaj Rimskij-Korsakov'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale cantante portoghese è stata una delle interpreti più celebri del fado?',
+'Amália Rodrigues',
+'Cesária Évora',
+'Miriam Makeba',
+'Mercedes Sosa'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale album di Miles Davis, pubblicato nel 1959, comprende So What?',
+'Kind of Blue',
+'Bitches Brew',
+'Sketches of Spain',
+'In a Silent Way'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale band ha pubblicato l''album OK Computer?',
+'Radiohead',
+'Blur',
+'Pulp',
+'Muse'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale compositore scrisse l''opera Il barbiere di Siviglia del 1816?',
+'Gioachino Rossini',
+'Gaetano Donizetti',
+'Vincenzo Bellini',
+'Giuseppe Verdi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quanti semitoni comprende un''ottava nel temperamento equabile occidentale?',
+'Dodici',
+'Sette',
+'Dieci',
+'Quattordici'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale cantautrice ha pubblicato l''album Blue nel 1971?',
+'Joni Mitchell',
+'Carole King',
+'Joan Baez',
+'Carly Simon'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale strumento a tastiera produce il suono pizzicando le corde?',
+'Clavicembalo',
+'Pianoforte',
+'Organo a canne',
+'Celesta'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'medio',
+'Quale gruppo italiano ha inciso Impressioni di settembre nel 1971?',
+'Premiata Forneria Marconi',
+'Banco del Mutuo Soccorso',
+'Le Orme',
+'Area'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositore scrisse la Sinfonia Turangalîla?',
+'Olivier Messiaen',
+'Pierre Boulez',
+'Henri Dutilleux',
+'Arthur Honegger'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale jazzista pubblicò l''album The Black Saint and the Sinner Lady nel 1963?',
+'Charles Mingus',
+'Thelonious Monk',
+'Ornette Coleman',
+'Sonny Rollins'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositore è autore del quartetto La morte e la fanciulla?',
+'Franz Schubert',
+'Robert Schumann',
+'Johannes Brahms',
+'Felix Mendelssohn'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale intervallo separa le note do e fa diesis ascendenti nella stessa ottava?',
+'Quarta aumentata',
+'Quarta giusta',
+'Quinta giusta',
+'Terza maggiore'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositore italiano scrisse i madrigali dell''Ottavo libro, detti guerrieri et amorosi?',
+'Claudio Monteverdi',
+'Carlo Gesualdo',
+'Luca Marenzio',
+'Giovanni Pierluigi da Palestrina'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale musicista nigeriano contribuì a creare l''afrobeat e guidò gli Africa 70?',
+'Fela Kuti',
+'Youssou N''Dour',
+'Salif Keïta',
+'Ali Farka Touré'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositore scrisse l''opera Wozzeck?',
+'Alban Berg',
+'Anton Webern',
+'Paul Hindemith',
+'Kurt Weill'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale accordatura ha la viola, dalla corda più grave alla più acuta?',
+'Do-Sol-Re-La',
+'Sol-Re-La-Mi',
+'Mi-La-Re-Sol',
+'Re-La-Mi-Si'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale compositrice finlandese scrisse l''opera L''Amour de loin?',
+'Kaija Saariaho',
+'Sofia Gubajdulina',
+'Unsuk Chin',
+'Judith Weir'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Musica'),
+'difficile',
+'Quale producer realizzò con David Byrne l''album My Life in the Bush of Ghosts?',
+'Brian Eno',
+'Daniel Lanois',
+'Trevor Horn',
+'Tony Visconti'
 );
 
 INSERT INTO domande (
@@ -3704,6 +5804,306 @@ VALUES
 'Dino Buzzati',
 'Cesare Pavese',
 'Alberto Moravia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale scrittrice creò il detective Hercule Poirot?',
+'Agatha Christie',
+'Dorothy L. Sayers',
+'Patricia Highsmith',
+'P. D. James'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale romanzo di Herman Melville racconta l''ossessione del capitano Achab?',
+'Moby Dick',
+'L''isola del tesoro',
+'Il richiamo della foresta',
+'Cuore di tenebra'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale scrittrice è autrice di Orgoglio e pregiudizio?',
+'Jane Austen',
+'Charlotte Brontë',
+'Emily Brontë',
+'Virginia Woolf'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Chi ha scritto Le avventure di Alice nel Paese delle Meraviglie?',
+'Lewis Carroll',
+'James Matthew Barrie',
+'Rudyard Kipling',
+'Robert Louis Stevenson'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quanti versi contiene un sonetto nella sua forma italiana tradizionale?',
+'Quattordici',
+'Dodici',
+'Sedici',
+'Diciotto'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale autore francese scrisse I miserabili?',
+'Victor Hugo',
+'Honoré de Balzac',
+'Émile Zola',
+'Gustave Flaubert'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale poeta italiano scrisse San Martino, che inizia con la nebbia agli irti colli?',
+'Giosuè Carducci',
+'Giovanni Pascoli',
+'Giuseppe Ungaretti',
+'Umberto Saba'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale scrittore creò il commissario Montalbano?',
+'Andrea Camilleri',
+'Carlo Lucarelli',
+'Giorgio Scerbanenco',
+'Maurizio de Giovanni'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale romanzo ha per protagonista il giovane Jim Hawkins e il pirata Long John Silver?',
+'L''isola del tesoro',
+'Il corsaro nero',
+'Capitani coraggiosi',
+'Ventimila leghe sotto i mari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'facile',
+'Quale autore scrisse la raccolta di racconti Il libro della giungla?',
+'Rudyard Kipling',
+'Jack London',
+'Joseph Conrad',
+'Daniel Defoe'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale romanzo di Italo Svevo ha come protagonista un uomo che racconta anche i suoi tentativi di smettere di fumare?',
+'La coscienza di Zeno',
+'Senilità',
+'Una vita',
+'Il fu Mattia Pascal'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale scrittrice italiana ricevette il Nobel per la letteratura nel 1926?',
+'Grazia Deledda',
+'Elsa Morante',
+'Natalia Ginzburg',
+'Matilde Serao'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale romanzo di Albert Camus ha come protagonista Meursault?',
+'Lo straniero',
+'La peste',
+'La caduta',
+'L''uomo in rivolta'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale poeta scrisse la raccolta I fiori del male?',
+'Charles Baudelaire',
+'Arthur Rimbaud',
+'Paul Verlaine',
+'Stéphane Mallarmé'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale autrice scrisse Cime tempestose?',
+'Emily Brontë',
+'Charlotte Brontë',
+'Anne Brontë',
+'George Eliot'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale romanzo di Ray Bradbury descrive una società in cui i pompieri bruciano libri?',
+'Fahrenheit 451',
+'Cronache marziane',
+'Il mondo nuovo',
+'La strada'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale romanzo di Luigi Pirandello ha come protagonista Vitangelo Moscarda?',
+'Uno, nessuno e centomila',
+'Il fu Mattia Pascal',
+'I vecchi e i giovani',
+'L''esclusa'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale scrittrice è autrice di Una stanza tutta per sé?',
+'Virginia Woolf',
+'Simone de Beauvoir',
+'Doris Lessing',
+'Marguerite Yourcenar'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale città fa da scenario principale al romanzo di James Joyce ambientato il 16 giugno 1904?',
+'Dublino',
+'Belfast',
+'Londra',
+'Cork'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'medio',
+'Quale poema di Ludovico Ariosto narra la follia amorosa di un paladino?',
+'Orlando furioso',
+'Orlando innamorato',
+'Gerusalemme liberata',
+'La secchia rapita'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale scrittore portoghese è noto per gli eteronimi Alberto Caeiro, Ricardo Reis e Álvaro de Campos?',
+'Fernando Pessoa',
+'José Saramago',
+'Eça de Queirós',
+'António Lobo Antunes'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale scrittrice giapponese è tradizionalmente riconosciuta come autrice del Genji monogatari?',
+'Murasaki Shikibu',
+'Sei Shōnagon',
+'Ono no Komachi',
+'Izumi Shikibu'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale autore nigeriano scrisse Il crollo, titolo italiano di Things Fall Apart?',
+'Chinua Achebe',
+'Wole Soyinka',
+'Ben Okri',
+'Ken Saro-Wiwa'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale romanzo di Thomas Mann è ambientato in gran parte in un sanatorio di Davos?',
+'La montagna incantata',
+'I Buddenbrook',
+'Doctor Faustus',
+'Morte a Venezia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale autore argentino scrisse la raccolta Finzioni?',
+'Jorge Luis Borges',
+'Julio Cortázar',
+'Adolfo Bioy Casares',
+'Ernesto Sabato'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale poeta compose l''opera sperimentale La terra desolata, pubblicata nel 1922?',
+'T. S. Eliot',
+'Ezra Pound',
+'W. B. Yeats',
+'Wallace Stevens'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale romanzo di Georges Perec fu scritto senza usare la lettera e nel testo francese?',
+'La scomparsa',
+'La vita istruzioni per l''uso',
+'Le cose',
+'Un uomo che dorme'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale scrittore scrisse il romanzo Il tamburo di latta?',
+'Günter Grass',
+'Heinrich Böll',
+'Thomas Bernhard',
+'Hermann Hesse'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale tragediografo greco scrisse Le Baccanti?',
+'Euripide',
+'Sofocle',
+'Eschilo',
+'Aristofane'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Letteratura'),
+'difficile',
+'Quale autrice scrisse Memorie di Adriano?',
+'Marguerite Yourcenar',
+'Marguerite Duras',
+'Simone de Beauvoir',
+'Colette'
 );
 
 INSERT INTO domande (
@@ -4165,6 +6565,306 @@ VALUES
 'John von Neumann',
 'Claude Shannon',
 'Konrad Zuse'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale componente perde normalmente i dati memorizzati quando viene tolta l''alimentazione?',
+'RAM',
+'SSD',
+'Disco rigido',
+'Memoria flash USB'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'A che cosa serve principalmente una copia di backup?',
+'Ripristinare dati in caso di perdita',
+'Aumentare la risoluzione dello schermo',
+'Raffreddare il processore',
+'Accelerare la tastiera'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale dispositivo converte un documento cartaceo in un''immagine digitale?',
+'Scanner',
+'Proiettore',
+'Plotter',
+'Altoparlante'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale formato è comunemente usato per distribuire documenti mantenendone l''impaginazione?',
+'PDF',
+'MP3',
+'CSV',
+'WAV'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale componente è specializzato nell''elaborazione grafica?',
+'GPU',
+'Alimentatore',
+'Scheda audio',
+'Scheda di rete'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Come si chiama un tentativo di sottrarre credenziali fingendosi un servizio affidabile tramite un messaggio?',
+'Phishing',
+'Deframmentazione',
+'Streaming',
+'Rendering'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quanti bit formano un byte?',
+'Otto',
+'Quattro',
+'Sedici',
+'Trentadue'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale collegamento trasporta normalmente audio e video digitali tra un computer e un televisore?',
+'HDMI',
+'RJ11',
+'Jack audio da 3,5 mm',
+'PS/2'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale funzione svolge il cestino di un sistema operativo desktop?',
+'Conserva temporaneamente i file eliminati in modo ordinario',
+'Cifra automaticamente tutti i documenti',
+'Aggiorna i programmi installati',
+'Corregge gli errori del disco'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'facile',
+'Quale tecnologia consente a un lettore di riconoscere a breve distanza una carta contactless?',
+'NFC',
+'GPS',
+'ADSL',
+'DVB-T'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale linguaggio definisce principalmente l''aspetto grafico delle pagine web?',
+'CSS',
+'SQL',
+'Bash',
+'C'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale formato di immagine usa normalmente compressione con perdita ed è molto diffuso per le fotografie?',
+'JPEG',
+'PNG',
+'BMP',
+'PBM'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale tipo di malware blocca o cifra i dati e chiede un pagamento per sbloccarli?',
+'Ransomware',
+'Adware',
+'Keylogger',
+'Rootkit'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale sistema satellitare statunitense permette di determinare una posizione geografica?',
+'GPS',
+'Galileo',
+'GLONASS',
+'BeiDou'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale struttura dati segue la regola «ultimo entrato, primo uscito»?',
+'Pila',
+'Coda FIFO',
+'Lista ordinata',
+'Tabella hash'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale unità esprime normalmente la velocità di trasferimento di una connessione di rete?',
+'Bit al secondo',
+'Byte per pollice',
+'Hertz per pixel',
+'Volt per metro'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'In un database relazionale, che cosa garantisce una chiave primaria?',
+'L''identificazione univoca di ogni riga',
+'L''ordinamento alfabetico di ogni colonna',
+'La cifratura automatica dei valori',
+'La duplicazione di tutte le righe'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale protocollo viene usato normalmente per l''invio della posta elettronica tra server?',
+'SMTP',
+'IMAP',
+'POP3',
+'NTP'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale pratica aggiunge alla password un secondo elemento indipendente per verificare l''identità?',
+'Autenticazione a due fattori',
+'Compressione dei dati',
+'Navigazione privata',
+'Indicizzazione dei file'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'medio',
+'Quale componente trasforma la corrente della rete elettrica nelle tensioni necessarie a un PC desktop?',
+'Alimentatore',
+'Dissipatore',
+'Scheda madre',
+'Scheda di rete'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale algoritmo trova cammini minimi da una sorgente in un grafo con pesi non negativi?',
+'Algoritmo di Dijkstra',
+'Algoritmo di Kruskal',
+'Algoritmo di Prim',
+'Algoritmo di Kahn'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale proprietà delle transazioni ACID richiede che tutte le operazioni siano completate oppure nessuna sia applicata?',
+'Atomicità',
+'Isolamento',
+'Durabilità',
+'Consistenza'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale struttura bilanciata è comunemente usata per gli indici nei database relazionali?',
+'B-tree',
+'Pila LIFO',
+'Coda circolare',
+'Lista semplicemente concatenata'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quanti bit contiene un indirizzo IPv6?',
+'128',
+'32',
+'64',
+'256'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale complessità temporale ha la ricerca binaria su un array ordinato di n elementi?',
+'O(log n)',
+'O(n)',
+'O(n log n)',
+'O(n²)'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale chiamata di sistema Unix crea un nuovo processo duplicando quello chiamante?',
+'fork',
+'execve',
+'wait',
+'open'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale protocollo sincronizza gli orologi dei computer attraverso una rete?',
+'NTP',
+'SNMP',
+'ARP',
+'BGP'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale principio di progettazione richiede che un modulo dipenda da astrazioni invece che da implementazioni concrete?',
+'Inversione delle dipendenze',
+'Responsabilità singola',
+'Segregazione delle interfacce',
+'Sostituzione di Liskov'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'In crittografia, quale proprietà richiede che sia difficile ricavare un input da un valore hash assegnato?',
+'Resistenza alla preimmagine',
+'Segretezza perfetta',
+'Non ripudio',
+'Autenticazione reciproca'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Tecnologia'),
+'difficile',
+'Quale meccanismo permette a un processore di eseguire più istruzioni sovrapponendone le fasi?',
+'Pipeline',
+'Spooling',
+'Journaling',
+'Garbage collection'
 );
 
 INSERT INTO domande (
@@ -4626,6 +7326,306 @@ VALUES
 'Il mio vicino Totoro',
 'Kiki - Consegne a domicilio',
 'Porco Rosso'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Come si chiama il cane di Charlie Brown nei Peanuts?',
+'Snoopy',
+'Odie',
+'Pluto',
+'Milou'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale gatto dei fumetti ama le lasagne e vive con Jon Arbuckle?',
+'Garfield',
+'Silvestro',
+'Felix',
+'Gambadilegno'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Nella fiaba dei tre porcellini, quale materiale rende la casa resistente al soffio del lupo?',
+'Mattoni',
+'Paglia',
+'Legno',
+'Canne'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale marinaio dei fumetti acquista una forza straordinaria mangiando spinaci?',
+'Braccio di Ferro',
+'Corto Maltese',
+'Capitan Harlock',
+'Capitan Haddock'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Come si chiama il padre di Lisa nella famiglia Simpson?',
+'Homer',
+'Ned',
+'Seymour',
+'Barney'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale personaggio accompagna Asterix ed è solito portare menhir?',
+'Obelix',
+'Panoramix',
+'Abraracourcix',
+'Assurancetourix'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale oggetto consulta la regina per sapere chi sia la più bella nella fiaba di Biancaneve?',
+'Uno specchio',
+'Una sfera di cristallo',
+'Un libro',
+'Una clessidra'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale supereroina dei fumetti DC è anche la principessa Diana delle Amazzoni?',
+'Wonder Woman',
+'Supergirl',
+'Batgirl',
+'Catwoman'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Come si chiama il cowboy giocattolo protagonista di Toy Story?',
+'Woody',
+'Buzz Lightyear',
+'Andy',
+'Sid'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'facile',
+'Quale personaggio dei cartoni tenta di catturare Beep Beep con complicati congegni?',
+'Wile E. Coyote',
+'Yosemite Sam',
+'Taz',
+'Elmer Fudd'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale autore creò i Peanuts?',
+'Charles M. Schulz',
+'Bill Watterson',
+'Jim Davis',
+'Walt Kelly'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale fumettista italiano creò Corto Maltese?',
+'Hugo Pratt',
+'Guido Crepax',
+'Sergio Toppi',
+'Milo Manara'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Nella fiaba di Hansel e Gretel dei fratelli Grimm, come segnano i bambini la strada la prima volta che vengono abbandonati?',
+'Con sassolini bianchi',
+'Con briciole di pane',
+'Con fili di lana',
+'Con semi di zucca'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale manga ha per protagonisti i fratelli Edward e Alphonse Elric?',
+'Fullmetal Alchemist',
+'Bleach',
+'Hunter × Hunter',
+'Yu Yu Hakusho'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'In quale città vivono i protagonisti della serie animata I Simpson?',
+'Springfield',
+'Quahog',
+'South Park',
+'Bikini Bottom'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale fumetto ha per protagonisti un bambino e una tigre di pezza che per lui prende vita?',
+'Calvin e Hobbes',
+'Dennis la minaccia',
+'Mafalda',
+'Zits'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Come si chiama il gatto di Gargamella nella versione italiana dei Puffi?',
+'Birba',
+'Romeo',
+'Isidoro',
+'Lucifero'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale oggetto viene usato da Light Yagami per uccidere nel manga Death Note?',
+'Un quaderno',
+'Una maschera',
+'Una spada',
+'Un orologio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale personaggio è il nemico di Peter Pan e comanda una nave pirata?',
+'Capitan Uncino',
+'Long John Silver',
+'Capitan Nemo',
+'Capitan Flint'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'medio',
+'Quale autrice creò il manga Sailor Moon?',
+'Naoko Takeuchi',
+'Rumiko Takahashi',
+'Hiromu Arakawa',
+'Moto Hagio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale disegnatore realizzò Watchmen su testi di Alan Moore?',
+'Dave Gibbons',
+'Frank Miller',
+'Brian Bolland',
+'David Lloyd'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale autore argentino creò Mafalda?',
+'Quino',
+'Mordillo',
+'Liniers',
+'Héctor Germán Oesterheld'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale fumettista creò la serie Krazy Kat?',
+'George Herriman',
+'Winsor McCay',
+'E. C. Segar',
+'Bud Fisher'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale regista diresse il film d''animazione Una tomba per le lucciole?',
+'Isao Takahata',
+'Satoshi Kon',
+'Mamoru Hosoda',
+'Makoto Shinkai'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale coppia di autrici creò Diabolik?',
+'Angela e Luciana Giussani',
+'Elisabetta Gnone e Barbara Canepa',
+'Paola Barbato e Barbara Baraldi',
+'Vanna Vinci e Silvia Ziche'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale mangaka è autore di Akira?',
+'Katsuhiro Ōtomo',
+'Masamune Shirow',
+'Yukito Kishiro',
+'Go Nagai'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale autore realizzò il graphic novel Maus?',
+'Art Spiegelman',
+'Will Eisner',
+'Joe Sacco',
+'Harvey Pekar'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale favolista francese pubblicò le Fables a partire dal 1668?',
+'Jean de La Fontaine',
+'Charles Perrault',
+'Charles Nodier',
+'François Fénelon'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale personaggio di Carl Barks apparve per la prima volta nella storia Il Natale di Paperino sul Monte Orso del 1947?',
+'Paperon de'' Paperoni',
+'Gastone',
+'Archimede Pitagorico',
+'Amelia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Fumetti, favole e cartoni'),
+'difficile',
+'Quale disegnatore creò il personaggio di Valentina, apparso per la prima volta nel 1965?',
+'Guido Crepax',
+'Hugo Pratt',
+'Dino Battaglia',
+'Magnus'
 );
 
 INSERT INTO domande (
@@ -5087,6 +8087,306 @@ VALUES
 'Source Engine',
 'CryEngine',
 'Unreal Engine 2'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'In quale serie si gestisce la vita quotidiana di personaggi, costruendo anche le loro abitazioni?',
+'The Sims',
+'Civilization',
+'Age of Empires',
+'RollerCoaster Tycoon'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale gioco combina partite di calcio con automobili controllate dai giocatori?',
+'Rocket League',
+'Trackmania',
+'Burnout Paradise',
+'Need for Speed'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale personaggio rosa di Nintendo può aspirare nemici e copiarne le abilità?',
+'Kirby',
+'Yoshi',
+'Toad',
+'Jigglypuff'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'In quale gioco bisogna individuare gli impostori tra i membri dell''equipaggio?',
+'Among Us',
+'Fall Guys',
+'Overcooked',
+'Gang Beasts'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale serie ha come protagonista l''avventuriero Nathan Drake?',
+'Uncharted',
+'Max Payne',
+'Splinter Cell',
+'Just Cause'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale saga Nintendo è incentrata su gare di kart e oggetti da usare contro gli avversari?',
+'Mario Kart',
+'F-Zero',
+'Excitebike',
+'Wave Race'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale gioco musicale utilizza tradizionalmente un controller a forma di chitarra?',
+'Guitar Hero',
+'Dance Dance Revolution',
+'SingStar',
+'Wii Music'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale serie segue gli avvocati Phoenix Wright e Apollo Justice?',
+'Ace Attorney',
+'Professor Layton',
+'Danganronpa',
+'Zero Escape'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale videogioco mette squadre di cuochi a collaborare in cucine caotiche?',
+'Overcooked',
+'Moving Out',
+'Human: Fall Flat',
+'Keep Talking and Nobody Explodes'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'facile',
+'Quale serie Nintendo ha come protagonista la cacciatrice di taglie Samus Aran?',
+'Metroid',
+'Star Fox',
+'Pikmin',
+'Kid Icarus'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale studio sviluppò The Last of Us del 2013?',
+'Naughty Dog',
+'Insomniac Games',
+'Bend Studio',
+'Sucker Punch Productions'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'In quale città italiana è ambientata gran parte della sequenza iniziale di Assassin''s Creed II con Ezio adulto?',
+'Firenze',
+'Roma',
+'Napoli',
+'Milano'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale gioco di ruolo del 1997 ha Cloud Strife come protagonista?',
+'Final Fantasy VII',
+'Chrono Cross',
+'Xenogears',
+'Grandia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Con quale pseudonimo è noto Eric Barone, autore di Stardew Valley?',
+'ConcernedApe',
+'Notch',
+'SWERY',
+'Suda51'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale serie Nintendo presenta gli Inkling che combattono usando inchiostro colorato?',
+'Splatoon',
+'ARMS',
+'Advance Wars',
+'Fire Emblem'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale compagnia pubblicò il primo Sonic the Hedgehog nel 1991?',
+'Sega',
+'Namco',
+'Capcom',
+'Konami'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale videogioco del 2017 è ambientato soprattutto nel regno di Hallownest?',
+'Hollow Knight',
+'Dead Cells',
+'Celeste',
+'Ori and the Blind Forest'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale serie strategica di Blizzard contrappone Terran, Zerg e Protoss?',
+'StarCraft',
+'Warcraft',
+'Command & Conquer',
+'Supreme Commander'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale console di Nintendo utilizzava due schermi, di cui quello inferiore sensibile al tocco, al suo debutto nel 2004?',
+'Nintendo DS',
+'Game Boy Advance',
+'Nintendo 64',
+'GameCube'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'medio',
+'Quale gioco del 2005 ha come protagonista Wander, impegnato ad abbattere gigantesche creature?',
+'Shadow of the Colossus',
+'Ico',
+'The Last Guardian',
+'Okami'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale designer creò il gioco Another World, pubblicato nel 1991?',
+'Éric Chahi',
+'Paul Cuisset',
+'Frédérick Raynal',
+'Michel Ancel'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale compositore scrisse principalmente la colonna sonora di Chrono Trigger, con contributi di Nobuo Uematsu?',
+'Yasunori Mitsuda',
+'Hitoshi Sakimoto',
+'Yoko Shimomura',
+'Masashi Hamauzu'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale studio finlandese sviluppò il primo Max Payne?',
+'Remedy Entertainment',
+'Housemarque',
+'RedLynx',
+'Frozenbyte'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale gioco di ruolo del 1999 è ambientato principalmente nella città di Sigil?',
+'Planescape: Torment',
+'Baldur''s Gate',
+'Icewind Dale',
+'Arcanum'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale personaggio è il fratello di Solid Snake e antagonista principale di Metal Gear Solid del 1998?',
+'Liquid Snake',
+'Revolver Ocelot',
+'Gray Fox',
+'Vulcan Raven'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale studio sviluppò System Shock 2 insieme a Irrational Games?',
+'Looking Glass Studios',
+'Ion Storm',
+'Raven Software',
+'Monolith Productions'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale autore creò Return of the Obra Dinn?',
+'Lucas Pope',
+'Jonathan Blow',
+'Derek Yu',
+'Phil Fish'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale gioco del 1980 di Atari conteneva una celebre stanza nascosta con il nome di Warren Robinett?',
+'Adventure',
+'Pitfall!',
+'Yars'' Revenge',
+'River Raid'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale studio canadese sviluppò Eternal Darkness: Sanity''s Requiem?',
+'Silicon Knights',
+'BioWare',
+'Digital Extremes',
+'Radical Entertainment'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Videogiochi'),
+'difficile',
+'Quale gioco di ruolo di Obsidian del 2010 si svolge nella regione del Mojave?',
+'Fallout: New Vegas',
+'Fallout 3',
+'Wasteland 2',
+'The Outer Worlds'
 );
 
 INSERT INTO domande (
@@ -5548,6 +8848,306 @@ VALUES
 'Australia',
 'Finlandia',
 'Norvegia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Come si chiama una consultazione in cui i cittadini votano direttamente su un quesito?',
+'Referendum',
+'Censimento',
+'Sondaggio',
+'Scrutinio parlamentare'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale carica guida l''amministrazione di un comune italiano?',
+'Sindaco',
+'Prefetto',
+'Questore',
+'Presidente di regione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale simbolo compare al centro della bandiera delle Nazioni Unite?',
+'Una mappa del mondo circondata da rami d''ulivo',
+'Una bilancia circondata da stelle',
+'Una colomba sopra un globo',
+'Una corona circondata da spighe'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Come si chiamano, in generale, i partiti che non sostengono il governo in Parlamento?',
+'Opposizione',
+'Coalizione di governo',
+'Corpo diplomatico',
+'Pubblica amministrazione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale istituzione eleggono direttamente i cittadini dell''Unione europea ogni cinque anni?',
+'Parlamento europeo',
+'Consiglio europeo',
+'Commissione europea',
+'Corte di giustizia dell''Unione europea'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'In quale paese il parlamento federale comprende il Bundestag?',
+'Germania',
+'Austria',
+'Belgio',
+'Svizzera'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale termine indica l''insieme delle persone aventi diritto di voto in un''elezione?',
+'Corpo elettorale',
+'Consiglio dei ministri',
+'Gruppo parlamentare',
+'Seggio elettorale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale documento stabilisce obiettivi e proposte di un partito durante una campagna elettorale?',
+'Programma elettorale',
+'Verbale di scrutinio',
+'Certificato elettorale',
+'Registro anagrafico'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Come si chiama il trasferimento di competenze dal livello centrale a enti territoriali?',
+'Decentramento',
+'Accentramento',
+'Protezionismo',
+'Bicameralismo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'facile',
+'Quale emblema caratterizza la bandiera dell''Unione europea?',
+'Dodici stelle dorate su fondo blu',
+'Quindici stelle bianche su fondo rosso',
+'Ventisette stelle argentate su fondo verde',
+'Dieci stelle blu su fondo bianco'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quanto dura il mandato ordinario del Presidente della Repubblica italiana?',
+'Sette anni',
+'Cinque anni',
+'Quattro anni',
+'Sei anni'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Chi nomina il Presidente del Consiglio dei ministri in Italia?',
+'Il Presidente della Repubblica',
+'Il Presidente della Camera',
+'Il Presidente del Senato',
+'Il Presidente della Corte costituzionale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale istituzione dell''UE riunisce i capi di Stato o di governo degli Stati membri?',
+'Consiglio europeo',
+'Consiglio dell''Unione europea',
+'Commissione europea',
+'Parlamento europeo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale termine indica la sospensione dei lavori parlamentari mediante interventi prolungati e altre tattiche dilatorie?',
+'Ostruzionismo',
+'Bipolarismo',
+'Trasformismo',
+'Federalismo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale sistema di governo prevede che l''esecutivo debba mantenere la fiducia del Parlamento?',
+'Sistema parlamentare',
+'Sistema presidenziale puro',
+'Monarchia assoluta',
+'Dittatura militare'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale paese ha un parlamento nazionale chiamato Knesset?',
+'Israele',
+'Grecia',
+'Turchia',
+'Giordania'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale organizzazione continentale succedette all''Organizzazione dell''Unità Africana nel 2002?',
+'Unione africana',
+'Lega araba',
+'Comunità dell''Africa orientale',
+'Comunità economica degli Stati dell''Africa occidentale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale Camera del Congresso statunitense assegna due seggi a ciascuno Stato?',
+'Senato',
+'Camera dei rappresentanti',
+'Assemblea nazionale',
+'Camera dei delegati'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Come si chiama l''insieme di ministri che forma l''organo collegiale del governo italiano?',
+'Consiglio dei ministri',
+'Consiglio di Stato',
+'Consiglio superiore della magistratura',
+'Conferenza Stato-Regioni'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'medio',
+'Quale principio vieta di concentrare nello stesso soggetto le funzioni di accusatore e giudice in un processo?',
+'Imparzialità del giudice',
+'Mandato imperativo',
+'Sovranità popolare',
+'Sussidiarietà territoriale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale procedura consente al Bundestag di sostituire il cancelliere solo eleggendone contemporaneamente uno nuovo?',
+'Sfiducia costruttiva',
+'Scioglimento automatico',
+'Impeachment presidenziale',
+'Referendum revocatorio'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale articolo della Costituzione italiana stabilisce che la forma repubblicana non può essere oggetto di revisione costituzionale?',
+'Articolo 139',
+'Articolo 21',
+'Articolo 81',
+'Articolo 117'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale metodo di assegnazione proporzionale dei seggi usa divisori successivi 1, 2, 3, 4 e così via?',
+'Metodo D''Hondt',
+'Metodo Sainte-Laguë standard',
+'Metodo Hare dei più alti resti',
+'Metodo del voto alternativo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale teorico politico sviluppò il concetto di posizione originaria e di velo d''ignoranza?',
+'John Rawls',
+'Robert Nozick',
+'Carl Schmitt',
+'Isaiah Berlin'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale forma di democrazia Arend Lijphart associò ad accordi tra élite di gruppi sociali distinti?',
+'Democrazia consociativa',
+'Democrazia plebiscitaria',
+'Democrazia diretta',
+'Democrazia deliberativa'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quanti membri permanenti siedono nel Consiglio di sicurezza delle Nazioni Unite?',
+'Cinque',
+'Quattro',
+'Sei',
+'Dieci'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale articolo della Costituzione italiana disciplina il referendum abrogativo delle leggi ordinarie?',
+'Articolo 75',
+'Articolo 50',
+'Articolo 87',
+'Articolo 134'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale trattato, firmato nel 1998, istituì la Corte penale internazionale?',
+'Statuto di Roma',
+'Trattato di Nizza',
+'Convenzione di Vienna del 1969',
+'Trattato di Amsterdam'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale studiosa analizzò le origini del totalitarismo in un''opera pubblicata nel 1951?',
+'Hannah Arendt',
+'Simone Weil',
+'Rosa Luxemburg',
+'Judith Shklar'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Politica'),
+'difficile',
+'Quale carica esercita le funzioni del Presidente della Repubblica italiana quando questi non può adempierle?',
+'Presidente del Senato',
+'Presidente della Camera',
+'Presidente del Consiglio',
+'Presidente della Corte costituzionale'
 );
 
 INSERT INTO domande (
@@ -6009,6 +9609,306 @@ VALUES
 'Human Development Index',
 'Global Peace Index',
 'World Happiness Report'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale sovrano britannico è stato incoronato nell''abbazia di Westminster il 6 maggio 2023?',
+'Carlo III',
+'Giorgio VI',
+'Edoardo VIII',
+'Guglielmo IV'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale cattedrale parigina è stata riaperta nel dicembre 2024 dopo il grande incendio del 2019?',
+'Notre-Dame',
+'Saint-Denis',
+'Saint-Louis des Invalides',
+'Saint-Alexandre-Nevsky'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale paese è entrato nella NATO il 7 marzo 2024?',
+'Svezia',
+'Finlandia',
+'Austria',
+'Irlanda'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale paese ha realizzato l''allunaggio della missione Chandrayaan-3 nell''agosto 2023?',
+'India',
+'Giappone',
+'Cina',
+'Corea del Sud'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale città giapponese ha ospitato l''Esposizione universale del 2025?',
+'Osaka',
+'Tokyo',
+'Kyoto',
+'Nagoya'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale nazionale ha vinto il campionato europeo maschile di calcio del 2024?',
+'Spagna',
+'Inghilterra',
+'Francia',
+'Germania'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale film ha vinto l''Oscar come miglior film alla cerimonia del 2024?',
+'Oppenheimer',
+'Povere creature!',
+'Barbie',
+'Killers of the Flower Moon'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale connettore è stato previsto dalle regole UE sul caricabatterie comune applicabili agli smartphone dal 28 dicembre 2024?',
+'USB-C',
+'Micro-USB',
+'Lightning',
+'Mini-USB'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale fenomeno astronomico è stato visibile nella sua fase totale lungo una fascia di Messico, Stati Uniti e Canada l''8 aprile 2024?',
+'Eclissi solare',
+'Eclissi lunare',
+'Transito di Venere',
+'Occultazione di Marte'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'facile',
+'Quale paese ha ospitato il vertice del G7 a Borgo Egnazia nel giugno 2024?',
+'Italia',
+'Francia',
+'Germania',
+'Canada'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale scrittrice sudcoreana ha ricevuto il Nobel per la letteratura nel 2024?',
+'Han Kang',
+'Shin Kyung-sook',
+'Bae Suah',
+'Choi Eun-young'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'In quale città si è tenuta la conferenza sul clima COP28 nel 2023?',
+'Dubai',
+'Baku',
+'Sharm el-Sheikh',
+'Glasgow'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Da quale asteroide provenivano i campioni consegnati sulla Terra da OSIRIS-REx nel settembre 2023?',
+'Bennu',
+'Ryugu',
+'Itokawa',
+'Eros'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale tecnologia vaccinale è stata favorita dalle scoperte di Karikó e Weissman, premiate con il Nobel per la medicina del 2023?',
+'Vaccini a RNA messaggero',
+'Vaccini a virus intero inattivato',
+'Vaccini a virus vivo attenuato',
+'Vaccini a tossoidi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale organizzazione continentale è stata ammessa come membro permanente del G20 al vertice di Nuova Delhi del 2023?',
+'Unione africana',
+'Lega araba',
+'ASEAN',
+'Mercosur'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale infrastruttura di Baltimora è crollata nel marzo 2024 dopo l''urto della nave Dali?',
+'Francis Scott Key Bridge',
+'Golden Gate Bridge',
+'Brooklyn Bridge',
+'Verrazzano-Narrows Bridge'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale strada antica italiana è stata iscritta nella Lista del Patrimonio mondiale UNESCO nel luglio 2024?',
+'Via Appia',
+'Via Flaminia',
+'Via Aurelia',
+'Via Emilia'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale paese è diventato il quinto a effettuare un allunaggio morbido grazie alla sonda SLIM nel gennaio 2024?',
+'Giappone',
+'Israele',
+'Corea del Sud',
+'Emirati Arabi Uniti'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale paese ha riportato nel giugno 2024 i primi campioni della faccia nascosta della Luna con Chang''e-6?',
+'Cina',
+'India',
+'Russia',
+'Stati Uniti'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'medio',
+'Quale paese ha ospitato a Belém la conferenza sul clima COP30 nel novembre 2025?',
+'Brasile',
+'Colombia',
+'Perù',
+'Messico'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale organizzazione giapponese di sopravvissuti ai bombardamenti atomici ha ricevuto il Nobel per la pace nel 2024?',
+'Nihon Hidankyo',
+'Peace Boat',
+'Soka Gakkai International',
+'Japan Red Cross Society'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale espressione designa il bilancio globale dell''azione climatica concluso per la prima volta alla COP28 del 2023?',
+'Global Stocktake',
+'Global Carbon Budget',
+'Emissions Gap Report',
+'Global Risk Report'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale trattato adottato dall''ONU nel giugno 2023 riguarda la biodiversità marina nelle aree oltre la giurisdizione nazionale?',
+'Accordo BBNJ',
+'Protocollo di Cartagena',
+'Convenzione di Minamata',
+'Protocollo di Nagoya'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale scala temporale è centrale negli impulsi luminosi studiati dai vincitori del Nobel per la fisica del 2023?',
+'Attosecondi',
+'Millisecondi',
+'Microsecondi',
+'Nanosecondi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale classe di biomolecole è al centro dei lavori premiati con il Nobel per la chimica del 2024 a Baker, Hassabis e Jumper?',
+'Proteine',
+'Lipidi',
+'Polisaccaridi',
+'Acidi grassi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale telescopio spaziale dell''ESA, lanciato nel luglio 2023, studia la materia oscura e l''energia oscura?',
+'Euclid',
+'Gaia',
+'Cheops',
+'Herschel'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale satellite di Didymos è stato colpito dalla missione DART nel settembre 2022?',
+'Dimorphos',
+'Phobos',
+'Deimos',
+'Dactyl'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale vettore ha lanciato la missione ESA Juice il 14 aprile 2023?',
+'Ariane 5',
+'Ariane 6',
+'Vega-C',
+'Falcon Heavy'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'Quale quota minima delle aree terrestri e marine dell''UE deve essere coperta da misure di ripristino entro il 2030 secondo il regolamento approvato nel 2024?',
+'20%',
+'5%',
+'40%',
+'70%'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Attualità'),
+'difficile',
+'In quale città si è conclusa nel dicembre 2022 la COP15 sulla biodiversità con l''adozione di un nuovo quadro globale?',
+'Montréal',
+'Vancouver',
+'Toronto',
+'Ottawa'
 );
 
 INSERT INTO domande (
@@ -6470,6 +10370,306 @@ VALUES
 'Curva di Laffer',
 'Curva di Lorenz',
 'Curva di Engel'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Che cosa rappresenta un''azione di una società?',
+'Una quota del suo capitale',
+'Un prestito con rimborso garantito',
+'Una tassa sui suoi prodotti',
+'Una fattura non ancora pagata'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Come si chiama la differenza positiva tra ricavi e costi di un''impresa?',
+'Utile',
+'Fatturato',
+'Debito',
+'Capitale sociale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Che cosa indica il termine esportazione?',
+'La vendita di beni o servizi all''estero',
+'L''acquisto di beni dall''estero',
+'Il trasferimento tra magazzini nazionali',
+'Il pagamento dei salari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Che cosa rappresenta il tasso di cambio?',
+'Il prezzo di una valuta espresso in un''altra',
+'Il rendimento medio delle azioni',
+'La percentuale di disoccupati',
+'L''aumento annuo dei salari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'In quale settore economico rientrano normalmente turismo e trasporti?',
+'Terziario',
+'Primario',
+'Secondario',
+'Estrattivo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Che cosa indica il potere d''acquisto di una somma di denaro?',
+'La quantità di beni e servizi che consente di comprare',
+'Il numero di banconote che la compone',
+'Il tasso di interesse fissato dalla banca',
+'Il valore dei soli beni esportati'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Come si chiama un mercato con pochi grandi venditori?',
+'Oligopolio',
+'Monopsonio',
+'Concorrenza perfetta',
+'Monopolio naturale'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Che cosa registra il fatturato di un''impresa?',
+'I ricavi delle vendite e delle prestazioni',
+'L''utile dopo tutte le imposte',
+'Il denaro disponibile in cassa in ogni momento',
+'Il solo valore dei macchinari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Quale costo resta invariato al variare della quantità prodotta entro una data capacità produttiva?',
+'Costo fisso',
+'Costo variabile totale',
+'Costo marginale',
+'Costo medio variabile'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'facile',
+'Se un prodotto costa 80 euro e viene scontato del 25%, quale prezzo si paga?',
+'60 euro',
+'55 euro',
+'65 euro',
+'75 euro'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Che cosa rappresenta il costo opportunità di una scelta?',
+'Il valore della migliore alternativa a cui si rinuncia',
+'La somma di tutte le spese già sostenute',
+'Il prezzo più basso disponibile sul mercato',
+'Il costo delle sole materie prime'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Quale situazione descrive un''esternalità negativa?',
+'Un''attività impone costi a terzi senza compensarli',
+'Un''impresa riduce volontariamente il prezzo',
+'Un consumatore risparmia parte del reddito',
+'Un produttore acquista nuove attrezzature'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Che cosa distingue il PIL reale dal PIL nominale?',
+'Corregge gli effetti delle variazioni dei prezzi',
+'Esclude sempre tutti i servizi',
+'Comprende solo le esportazioni',
+'Misura esclusivamente la produzione pubblica'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Che cosa si intende per interesse composto?',
+'Gli interessi maturati producono a loro volta interessi',
+'Il tasso resta sempre uguale all''inflazione',
+'Gli interessi vengono pagati solo in beni',
+'Il capitale viene rimborsato prima degli interessi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Quale voce è un''attività nello stato patrimoniale di un''impresa?',
+'Un credito verso un cliente',
+'Un debito verso un fornitore',
+'Un mutuo da restituire',
+'Un''imposta ancora da versare'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Come si chiama l''aumento generalizzato dei prezzi accompagnato da stagnazione economica?',
+'Stagflazione',
+'Deflazione',
+'Disinflazione',
+'Espansione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Che cosa si verifica nel punto di pareggio di un''impresa?',
+'I ricavi totali eguagliano i costi totali',
+'I ricavi sono necessariamente nulli',
+'I costi variabili scompaiono',
+'Il profitto raggiunge sempre il massimo'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Quale differenza viene misurata dalla bilancia commerciale delle merci?',
+'Esportazioni meno importazioni di beni',
+'Entrate fiscali meno spese pubbliche',
+'Risparmio privato meno consumi',
+'Prestiti bancari meno depositi'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Quale caratteristica distingue un bene pubblico puro?',
+'È non rivale e non escludibile',
+'È sempre prodotto da un''impresa privata',
+'Ha sempre prezzo pari al costo marginale',
+'Può essere consumato da una sola persona'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'medio',
+'Se il prezzo di un bene cresce del 10% e la quantità domandata diminuisce del 20%, quanto vale in valore assoluto l''elasticità calcolata come rapporto tra queste variazioni percentuali?',
+'2',
+'0,5',
+'1',
+'10'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale problema descrive la selezione avversa?',
+'Informazioni nascoste prima di un contratto alterano la composizione dei partecipanti',
+'Comportamenti nascosti dopo un contratto modificano gli incentivi',
+'Prezzi identici eliminano tutti i concorrenti',
+'Costi fissi crescenti riducono la produzione'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale economista illustrò le asimmetrie informative con il mercato delle auto usate nel saggio The Market for Lemons?',
+'George Akerlof',
+'Paul Samuelson',
+'Robert Solow',
+'Gary Becker'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Nel modello di Solow senza progresso tecnologico, che cosa accade al prodotto per lavoratore nello stato stazionario?',
+'Rimane costante',
+'Cresce indefinitamente a tasso crescente',
+'Diventa necessariamente nullo',
+'Oscilla sempre tra due valori'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale teorema collega la contrattazione sui diritti di proprietà a un esito efficiente in assenza di costi di transazione e sotto le sue altre ipotesi?',
+'Teorema di Coase',
+'Teorema di Bayes',
+'Teorema di Arrow sull''impossibilità',
+'Teorema di Modigliani-Miller'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Che cosa misura il saggio marginale di sostituzione tra due beni?',
+'Quanto di un bene si cede per un''unità aggiuntiva dell''altro a utilità costante',
+'La variazione del profitto al variare del salario',
+'Il rapporto tra imposte e reddito nazionale',
+'La quota di reddito risparmiata'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale condizione definisce un equilibrio di Nash?',
+'Nessun giocatore migliora cambiando da solo strategia',
+'Tutti i giocatori ottengono lo stesso risultato',
+'Il risultato massimizza sempre il benessere collettivo',
+'Ogni giocatore conosce le mosse future con certezza'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Che cosa descrive la trappola della liquidità nel modello keynesiano tradizionale?',
+'Una situazione in cui aumentare la moneta non riduce ulteriormente il tasso d''interesse',
+'Una situazione in cui tutte le banche esauriscono le riserve',
+'Un divieto di prelevare contante imposto ai cittadini',
+'Un sistema in cui il tasso di cambio è sempre fisso'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale criterio migliora l''allocazione di risorse se qualcuno sta meglio e nessuno sta peggio?',
+'Miglioramento paretiano',
+'Compensazione di Kaldor-Hicks soltanto potenziale',
+'Massimizzazione del fatturato',
+'Minimizzazione dei salari'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale identità esprime il risparmio nazionale in un''economia aperta, indicando con I gli investimenti e con CA il saldo delle partite correnti?',
+'S = I + CA',
+'S = I − CA',
+'S = CA − I',
+'S = I × CA'
+),
+
+(
+(SELECT id FROM categorie WHERE nome = 'Economia'),
+'difficile',
+'Quale economista associò lo sviluppo economico al modello di un settore tradizionale con offerta illimitata di lavoro?',
+'W. Arthur Lewis',
+'Robert Lucas',
+'Wassily Leontief',
+'Jan Tinbergen'
 );
 
 COMMIT;
